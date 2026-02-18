@@ -26,13 +26,13 @@ function Contact() {
     {
       icon: MapPin,
       title: 'Campus Address',
-      details: ['Aushnara College Campus', 'Dhaka Division', 'Bangladesh'],
+      details: ['23/A, Dhanmondi R/A', 'Dhaka-1205', 'Bangladesh'],
       color: 'text-blue-600'
     },
     {
       icon: Phone,
       title: 'Phone Numbers',
-      details: ['+880-XXX-XXXXXX (Main)', '+880-XXX-XXXXXX (Admissions)', '+880-XXX-XXXXXX (Academic)'],
+      details: ['+880-2-58154892 (Main)', '+880-2-58154893 (Admissions)', '+880-2-58154894 (Academic)'],
       color: 'text-green-600'
     },
     {
@@ -52,25 +52,25 @@ function Contact() {
   const departments = [
     {
       name: 'Principal\'s Office',
-      phone: '+880-XXX-XX1001',
+      phone: '+880-2-58154892',
       email: 'principal@aushnaracollege.edu.bd',
-      hours: 'Sun-Thu: 9:00 AM - 3:00 PM'
+      hours: 'Sun-Thu: 9:00 AM - 4:00 PM'
     },
     {
       name: 'Admissions Office',
-      phone: '+880-XXX-XX2002',
+      phone: '+880-2-58154893',
       email: 'admissions@aushnaracollege.edu.bd',
-      hours: 'Sun-Thu: 8:00 AM - 4:00 PM'
+      hours: 'Sun-Thu: 8:00 AM - 5:00 PM'
     },
     {
       name: 'Academic Office',
-      phone: '+880-XXX-XX3003',
+      phone: '+880-2-58154894',
       email: 'academic@aushnaracollege.edu.bd',
-      hours: 'Sun-Thu: 8:30 AM - 3:30 PM'
+      hours: 'Sun-Thu: 8:30 AM - 4:30 PM'
     },
     {
       name: 'Student Affairs',
-      phone: '+880-XXX-XX4004',
+      phone: '+880-2-58154895',
       email: 'students@aushnaracollege.edu.bd',
       hours: 'Sun-Thu: 8:00 AM - 4:00 PM'
     }
@@ -226,8 +226,9 @@ function Contact() {
                   <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600 font-medium">Interactive Map Coming Soon</p>
                   <p className="text-sm text-gray-500 mt-2">
-                    Aushnara College Campus<br />
-                    Dhaka Division, Bangladesh
+                    Aushnara College<br />
+                    23/A, Dhanmondi R/A, Dhaka-1205<br />
+                    Bangladesh
                   </p>
                 </div>
               </div>
@@ -238,15 +239,15 @@ function Contact() {
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <span className="w-6 h-6 bg-college-blue text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</span>
-                    <span>Take bus/train to [Nearest Station/Stop]</span>
+                    <span>Take bus to Dhanmondi Bus Stand or Metro to Dhanmondi Station</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-6 h-6 bg-college-blue text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</span>
-                    <span>College is located 5 minutes walk from the station</span>
+                    <span>College is 3 minutes walk from Dhanmondi-27 intersection</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-6 h-6 bg-college-blue text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</span>
-                    <span>Look for the blue and gold college sign</span>
+                    <span>Look for the Aushnara College main gate with blue signboard</span>
                   </li>
                 </ul>
               </div>

@@ -37,27 +37,27 @@ function Home() {
   ]
 
   const stats = [
-    { number: '500+', label: 'Students' },
-    { number: '50+', label: 'Faculty Members' },
-    { number: '25+', label: 'Years of Excellence' },
-    { number: '95%', label: 'Success Rate' }
+    { number: '2,847', label: 'Total Students' },
+    { number: '89', label: 'Qualified Teachers' },
+    { number: '23', label: 'Years of Excellence' },
+    { number: '97.3%', label: 'HSC Pass Rate 2024' }
   ]
 
   const news = [
     {
-      date: 'Feb 15, 2026',
-      title: 'New Science Laboratory Inaugurated',
-      description: 'State-of-the-art chemistry and physics labs now open for students'
+      date: 'Dec 22, 2024',
+      title: 'HSC Results 2024: Outstanding Performance',
+      description: 'Aushnara College students achieve 97.3% pass rate with 143 students securing GPA 5.00'
     },
     {
-      date: 'Feb 10, 2026',
-      title: 'Annual Sports Day 2026',
-      description: 'Celebrating athletic achievements and school spirit'
+      date: 'Nov 15, 2024',
+      title: 'Inter-College Science Fair Victory',
+      description: 'Our students won first place in the National Inter-College Science Fair organized by Bangladesh Education Board'
     },
     {
-      date: 'Feb 5, 2026',
-      title: 'Admissions Open for 2026-27',
-      description: 'Applications now being accepted for the upcoming academic year'
+      date: 'Oct 30, 2024',
+      title: 'Digital Library Expansion Completed',
+      description: 'Modern digital library with 50,000+ e-books and research journals now accessible to all students'
     }
   ]
 

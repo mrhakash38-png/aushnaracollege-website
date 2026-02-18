@@ -3,11 +3,12 @@ import { Calendar, FileText, DollarSign, CheckCircle, AlertCircle, Clock, Users,
 
 function Admissions() {
   const timeline = [
-    { date: 'March 1 - April 30', event: 'Application Period', status: 'open' },
-    { date: 'May 1 - May 15', event: 'Document Verification', status: 'upcoming' },
-    { date: 'May 20 - May 25', event: 'Admission Test', status: 'upcoming' },
-    { date: 'June 1', event: 'Merit List Publication', status: 'upcoming' },
-    { date: 'June 5 - June 15', event: 'Enrollment Period', status: 'upcoming' }
+    { date: 'December 1 - February 28', event: 'HSC Admission Applications Open', status: 'open' },
+    { date: 'March 1 - March 15', event: 'Document Verification & Review', status: 'upcoming' },
+    { date: 'March 20 - March 25', event: 'Admission Test (Written & Viva)', status: 'upcoming' },
+    { date: 'April 1', event: 'Merit List Publication', status: 'upcoming' },
+    { date: 'April 5 - April 20', event: 'Final Admission & Fee Payment', status: 'upcoming' },
+    { date: 'July 1', event: 'Classes Begin (Academic Year 2025)', status: 'upcoming' }
   ]
 
   const requirements = [
@@ -43,24 +44,24 @@ function Admissions() {
   const fees = [
     {
       program: 'Science',
-      admission: '৳5,000',
-      monthly: '৳3,500',
-      annual: '৳42,000',
-      total: '৳89,000'
+      admission: '৳8,000',
+      monthly: '৳4,200',
+      annual: '৳50,400',
+      total: '৳1,08,800'
     },
     {
       program: 'Commerce',
-      admission: '৳4,000',
-      monthly: '৳3,000',
-      annual: '৳36,000',
-      total: '৳76,000'
+      admission: '৳6,500',
+      monthly: '৳3,800',
+      annual: '৳45,600',
+      total: '৳97,700'
     },
     {
       program: 'Arts',
-      admission: '৳3,500',
-      monthly: '৳2,500',
-      annual: '৳30,000',
-      total: '৳63,500'
+      admission: '৳6,000',
+      monthly: '৳3,500',
+      annual: '৳42,000',
+      total: '৳90,000'
     }
   ]
 
@@ -105,8 +106,8 @@ function Admissions() {
           <div className="flex items-center">
             <AlertCircle className="h-6 w-6 text-yellow-600 mr-3" />
             <div>
-              <h3 className="text-lg font-semibold text-yellow-800">Applications Now Open!</h3>
-              <p className="text-yellow-700">HSC admission applications are currently being accepted. Apply before April 30, 2026.</p>
+              <h3 className="text-lg font-semibold text-yellow-800">HSC Admissions 2025-26 Now Open!</h3>
+              <p className="text-yellow-700">Applications for HSC admission (Science, Commerce & Arts) are now being accepted. Deadline: February 28, 2025.</p>
             </div>
           </div>
         </div>

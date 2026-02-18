@@ -3,32 +3,34 @@ import { Award, Users, Target, Heart, BookOpen, Building2 } from 'lucide-react'
 
 function About() {
   const milestones = [
-    { year: '2001', event: 'Aushnara College Established' },
-    { year: '2005', event: 'First Science Laboratory Built' },
-    { year: '2010', event: 'Computer Lab Inaugurated' },
-    { year: '2015', event: 'Sports Complex Completed' },
-    { year: '2020', event: 'Digital Learning Initiative Launched' },
-    { year: '2025', event: 'Modern Library & Research Center' }
+    { year: '2001', event: 'Aushnara College Founded by Education Trust of Bangladesh' },
+    { year: '2004', event: 'First Batch of HSC Students Graduate with 100% Pass Rate' },
+    { year: '2007', event: 'Advanced Science Laboratories Constructed' },
+    { year: '2012', event: 'Computer Laboratory with 60 Systems Inaugurated' },
+    { year: '2016', event: 'Multi-purpose Sports Complex & Auditorium Completed' },
+    { year: '2019', event: 'Recognized as "Best Educational Institution" by Dhaka Education Board' },
+    { year: '2022', event: 'Digital Library & Research Center Launched' },
+    { year: '2024', event: 'Achieved 97.3% HSC Pass Rate - Highest in District' }
   ]
 
   const leadership = [
     {
-      name: 'Prof. Dr. Mohammad Rahman',
+      name: 'Prof. Dr. Md. Abul Kalam Azad',
       position: 'Principal',
-      qualification: 'Ph.D. in Education, Dhaka University',
-      experience: '25+ years in education'
+      qualification: 'Ph.D. in Education Management, University of Dhaka',
+      experience: '28 years in educational leadership'
     },
     {
-      name: 'Dr. Fatima Khatun',
-      position: 'Vice Principal',
-      qualification: 'Ph.D. in Mathematics, BUET',
-      experience: '20+ years in academics'
+      name: 'Dr. Rashida Begum',
+      position: 'Vice Principal (Academic)',
+      qualification: 'Ph.D. in Physics, Bangladesh University of Engineering & Technology',
+      experience: '22 years in academic administration'
     },
     {
-      name: 'Mr. Abdul Karim',
-      position: 'Academic Director',
-      qualification: 'M.A. in English Literature',
-      experience: '18+ years in education'
+      name: 'Mr. Md. Nazrul Islam',
+      position: 'Vice Principal (Administration)',
+      qualification: 'M.A. in Public Administration, National University',
+      experience: '19 years in educational management'
     }
   ]
 
