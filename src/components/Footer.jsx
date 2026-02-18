@@ -50,11 +50,11 @@ function Footer() {
             <ul className="space-y-3 text-gray-400 text-sm">
               <li className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Aushnara College Campus<br />Bangladesh</span>
+                <span>23/A, Dhanmondi R/A<br />Dhaka-1205, Bangladesh</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <span>+880-XXX-XXXXXX</span>
+                <span>+880-2-58154892</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />

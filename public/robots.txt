@@ -1,0 +1,22 @@
+# robots.txt for https://aushnaracollege.edu.bd
+
+User-agent: *
+Allow: /
+
+# AI/search-related crawlers (kept open for discovery and citation visibility)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://aushnaracollege.edu.bd/sitemap.xml

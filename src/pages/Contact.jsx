@@ -151,7 +151,7 @@ function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-college-blue focus:border-college-blue transition-colors"
-                      placeholder="+880-XXX-XXXXXX"
+                      placeholder="+880-2-58154892"
                     />
                   </div>
                 </div>
@@ -352,7 +352,7 @@ function Contact() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="tel:+880-XXX-XXXXXX" 
+              href="tel:+880258154892" 
               className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200"
             >
               Call Us Now

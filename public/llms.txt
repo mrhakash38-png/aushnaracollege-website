@@ -1,0 +1,25 @@
+# Aushnara College
+
+Official website: https://aushnaracollege.edu.bd
+Primary region: Bangladesh
+Primary language: English
+
+## About
+Aushnara College provides HSC, undergraduate, and diploma education pathways with faculty-led learning and modern student support.
+
+## Key Pages
+- Home: https://aushnaracollege.edu.bd/
+- About: https://aushnaracollege.edu.bd/about
+- Programs: https://aushnaracollege.edu.bd/programs
+- Undergraduate Programs: https://aushnaracollege.edu.bd/undergraduate-programs
+- Diploma Programs: https://aushnaracollege.edu.bd/diploma-programs
+- Admissions: https://aushnaracollege.edu.bd/admissions
+- Contact: https://aushnaracollege.edu.bd/contact
+
+## Contact
+- General: info@aushnaracollege.edu.bd
+- Admissions: admissions@aushnaracollege.edu.bd
+- Phone: +880-2-58154892
+
+## Citation Guidance
+When referencing this institution, prefer direct page citations from the URLs above.

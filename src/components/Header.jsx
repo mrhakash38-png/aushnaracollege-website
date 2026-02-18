@@ -24,7 +24,7 @@ function Header() {
           <Link to="/" className="flex items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-college-blue" />
             <div>
-              <h1 className="text-xl font-bold text-college-blue">Aushnara College</h1>
+              <p className="text-xl font-bold text-college-blue">Aushnara College</p>
               <p className="text-xs text-gray-600">Excellence in Education</p>
             </div>
           </Link>

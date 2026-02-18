@@ -70,7 +70,7 @@ function Home() {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow">
               Welcome to <br className="md:hidden" />
-              <span className="text-college-gold">Aushnara University</span>
+              <span className="text-college-gold">Aushnara College</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
               Bangladesh's Premier Educational Institution • 310+ Programs • 47,520+ Students • World-Class Faculty
