@@ -4,33 +4,41 @@ import { Award, Users, Target, Heart, BookOpen, Building2 } from 'lucide-react'
 function About() {
   const milestones = [
     { year: '2001', event: 'Aushnara College Founded by Education Trust of Bangladesh' },
-    { year: '2004', event: 'First Batch of HSC Students Graduate with 100% Pass Rate' },
-    { year: '2007', event: 'Advanced Science Laboratories Constructed' },
-    { year: '2012', event: 'Computer Laboratory with 60 Systems Inaugurated' },
-    { year: '2016', event: 'Multi-purpose Sports Complex & Auditorium Completed' },
-    { year: '2019', event: 'Recognized as "Best Educational Institution" by Dhaka Education Board' },
-    { year: '2022', event: 'Digital Library & Research Center Launched' },
-    { year: '2024', event: 'Achieved 97.3% HSC Pass Rate - Highest in District' }
+    { year: '2005', event: 'First Undergraduate Programs Launched - Engineering & Business' },
+    { year: '2008', event: 'Medical College Established with MBBS Program' },
+    { year: '2012', event: 'University Status Granted - Became Aushnara University' },
+    { year: '2015', event: '50,000+ Students Milestone Achieved Across All Programs' },
+    { year: '2018', event: 'International Accreditation from WHO for Medical Programs' },
+    { year: '2020', event: '100+ Undergraduate Programs Portfolio Completed' },
+    { year: '2022', event: '200+ Diploma Programs Added Across 8 Categories' },
+    { year: '2023', event: '120,000+ Students Enrolled - Largest University in Bangladesh' },
+    { year: '2024', event: 'Research Grants Worth ৳50 Crore Approved for Advanced Studies' }
   ]
 
   const leadership = [
     {
       name: 'Prof. Dr. Md. Abul Kalam Azad',
-      position: 'Principal',
+      position: 'Vice-Chancellor',
       qualification: 'Ph.D. in Education Management, University of Dhaka',
-      experience: '28 years in educational leadership'
+      experience: '32 years in university leadership and research'
     },
     {
-      name: 'Dr. Rashida Begum',
-      position: 'Vice Principal (Academic)',
-      qualification: 'Ph.D. in Physics, Bangladesh University of Engineering & Technology',
-      experience: '22 years in academic administration'
+      name: 'Prof. Dr. Rashida Begum',
+      position: 'Pro Vice-Chancellor (Academic)',
+      qualification: 'Ph.D. in Physics, MIT, USA',
+      experience: '28 years in academic administration and research'
     },
     {
-      name: 'Mr. Md. Nazrul Islam',
-      position: 'Vice Principal (Administration)',
-      qualification: 'M.A. in Public Administration, National University',
-      experience: '19 years in educational management'
+      name: 'Prof. Dr. Md. Nazrul Islam',
+      position: 'Pro Vice-Chancellor (Administration)',
+      qualification: 'Ph.D. in Management, Oxford University, UK',
+      experience: '25 years in university administration and policy'
+    },
+    {
+      name: 'Prof. Dr. Fatima Rahman',
+      position: 'Treasurer',
+      qualification: 'Ph.D. in Economics, Harvard University, USA',
+      experience: '24 years in financial management and economics'
     }
   ]
 
@@ -40,9 +48,9 @@ function About() {
       <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Aushnara College</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Aushnara University</h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100">
-              Excellence in Education Since 2001
+              Bangladesh's Premier Educational Institution • 310+ Programs • 120,000+ Students
             </p>
           </div>
         </div>
@@ -58,9 +66,10 @@ function About() {
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                To provide quality education that empowers students with knowledge, skills, and values 
-                necessary for success in their academic pursuits and future careers. We strive to create 
-                an inclusive learning environment that fosters critical thinking, creativity, and character development.
+                To be Bangladesh's leading comprehensive university, providing world-class education across 
+                310+ programs to over 120,000 students. We empower learners through innovative teaching, 
+                cutting-edge research, and industry partnerships, fostering critical thinking, creativity, 
+                and leadership skills that drive societal progress and global competitiveness.
               </p>
             </div>
             <div className="text-center md:text-left">
@@ -69,9 +78,10 @@ function About() {
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Vision</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                To be recognized as a leading educational institution in Bangladesh, known for academic 
-                excellence, innovative teaching methodologies, and producing graduates who contribute 
-                meaningfully to society and the global community.
+                To be recognized as South Asia's premier multi-disciplinary university, setting global 
+                standards in education, research, and innovation. We aspire to produce graduates who are 
+                industry-ready leaders, entrepreneurs, and change-makers contributing to Bangladesh's 
+                economic growth and technological advancement on the world stage.
               </p>
             </div>
           </div>

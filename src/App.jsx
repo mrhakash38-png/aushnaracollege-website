@@ -5,6 +5,8 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Programs from './pages/Programs'
+import UndergraduatePrograms from './pages/UndergraduatePrograms'
+import DiplomaPrograms from './pages/DiplomaPrograms'
 import Admissions from './pages/Admissions'
 import Contact from './pages/Contact'
 
@@ -18,6 +20,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/programs" element={<Programs />} />
+            <Route path="/undergraduate-programs" element={<UndergraduatePrograms />} />
+            <Route path="/diploma-programs" element={<DiplomaPrograms />} />
             <Route path="/admissions" element={<Admissions />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
