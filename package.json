@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "monitor:check": "bash scripts/monitoring-check.sh"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
