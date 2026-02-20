@@ -1,7 +1,12 @@
-import React from 'react'
-import { Calendar, FileText, DollarSign, CheckCircle, AlertCircle, Clock, Users, Award } from 'lucide-react'
+import React, { useState } from 'react'
+import { Calendar, FileText, DollarSign, CheckCircle, AlertCircle, Clock, Users, Award, Download, Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react'
 
 function Admissions() {
+  const [openFAQ, setOpenFAQ] = useState(null)
+
+  const toggleFAQ = (index) => {
+    setOpenFAQ(openFAQ === index ? null : index)
+  }
   const timeline = [
     { date: 'December 1 - February 28', event: 'HSC Admission Applications Open', status: 'open' },
     { date: 'March 1 - March 15', event: 'Document Verification & Review', status: 'upcoming' },
@@ -83,6 +88,86 @@ function Admissions() {
       criteria: 'Outstanding performance in sports',
       benefit: 'Up to 25% tuition fee waiver',
       icon: CheckCircle
+    }
+  ]
+
+  const faqs = [
+    {
+      question: 'What are the eligibility criteria for HSC admission?',
+      answer: 'Students must have passed SSC/equivalent examination with minimum GPA 3.5 for Science, 3.0 for Commerce, and 2.5 for Arts. Age limit: 17-21 years as of July 1, 2026.'
+    },
+    {
+      question: 'How can I apply for admission?',
+      answer: 'You can apply online through our website or visit the admission office in person. Download the application form, fill it out completely, and submit along with required documents and admission test fee.'
+    },
+    {
+      question: 'Is there an admission test?',
+      answer: 'Yes, all applicants must take an admission test consisting of written exam (MCQ + Written) and viva voce. The test covers subjects relevant to your chosen stream. Syllabus is based on SSC curriculum.'
+    },
+    {
+      question: 'What is the admission test fee?',
+      answer: 'The admission test fee is ৳500 for all programs. This fee is non-refundable and separate from the admission fee.'
+    },
+    {
+      question: 'Can I change my subject group after admission?',
+      answer: 'Subject group changes are allowed only within the first 2 weeks of the academic session, subject to seat availability and fulfillment of eligibility criteria for the desired group.'
+    },
+    {
+      question: 'Are there hostel facilities available?',
+      answer: 'Currently, Aushnara College does not have on-campus hostel facilities. However, we maintain a list of approved off-campus accommodations near the college for outstation students.'
+    },
+    {
+      question: 'How do I apply for scholarships?',
+      answer: 'Scholarship applications are automatically considered based on admission test performance and submitted documents. Need-based aid requires additional income certificate submission.'
+    },
+    {
+      question: 'What is the refund policy?',
+      answer: 'Admission fees are non-refundable after confirmation. Monthly fees paid in advance may be refunded for the months not attended, subject to written request and college policy.'
+    },
+    {
+      question: 'Can I visit the campus before applying?',
+      answer: 'Yes! Campus tours are available Monday-Friday, 10:00 AM - 4:00 PM. We recommend scheduling a visit by calling our admission office at +880-2-58154893.'
+    },
+    {
+      question: 'When will the admission results be published?',
+      answer: 'Merit list will be published on April 1, 2026 on our website and notice board. Selected candidates will also receive SMS/email notifications.'
+    },
+    {
+      question: 'What documents do I need for the admission test?',
+      answer: 'Bring your SSC admit card or registration card, admission test admit card (downloaded from website), and one passport-size photograph.'
+    },
+    {
+      question: 'Is coaching available for admission test preparation?',
+      answer: 'The college does not offer official coaching. However, we publish detailed syllabus guidelines and previous years\' question patterns on our website to help candidates prepare.'
+    }
+  ]
+
+  const downloads = [
+    { name: 'College Prospectus 2026-27', size: '2.4 MB', type: 'PDF' },
+    { name: 'Admission Application Form', size: '156 KB', type: 'PDF' },
+    { name: 'Admission Test Syllabus', size: '428 KB', type: 'PDF' },
+    { name: 'Fee Structure Details', size: '312 KB', type: 'PDF' },
+    { name: 'Scholarship Application Form', size: '198 KB', type: 'PDF' }
+  ]
+
+  const testimonials = [
+    {
+      name: 'Ruhul Amin',
+      batch: 'HSC 2024 - Science',
+      image: '👨‍🎓',
+      text: 'Aushnara College provided me with excellent faculty and resources. I scored GPA 5.0 and got admitted to Dhaka University. The supportive environment here is unmatched!'
+    },
+    {
+      name: 'Tasnia Ahmed',
+      batch: 'HSC 2024 - Commerce',
+      image: '👩‍🎓',
+      text: 'The practical approach to teaching and individual attention from teachers helped me excel in both academics and extracurricular activities. Highly recommend!'
+    },
+    {
+      name: 'Fahim Hassan',
+      batch: 'HSC 2023 - Science',
+      image: '👨‍🎓',
+      text: 'From a small-town student to getting admission in BUET - Aushnara College made it possible. The disciplined environment and quality education transformed my life.'
     }
   ]
 
@@ -281,24 +366,163 @@ function Admissions() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-college-blue text-white py-16">
+      {/* Downloads Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Downloads & Resources</h2>
+            <p className="text-lg text-gray-600">Important documents and information</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {downloads.map((download, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg card-shadow hover-lift flex items-center justify-between">
+                <div className="flex items-center">
+                  <FileText className="h-10 w-10 text-college-blue mr-4" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">{download.name}</h3>
+                    <p className="text-sm text-gray-500">{download.type} • {download.size}</p>
+                  </div>
+                </div>
+                <button className="bg-college-blue text-white p-2 rounded-lg hover:bg-blue-700 transition-colors">
+                  <Download className="h-5 w-5" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Student Testimonials */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Student Success Stories</h2>
+            <p className="text-lg text-gray-600">Hear from our successful alumni</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white p-8 rounded-lg card-shadow">
+                <div className="flex items-center mb-6">
+                  <div className="text-5xl mr-4">{testimonial.image}</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
+                    <p className="text-sm text-gray-600">{testimonial.batch}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic">"{testimonial.text}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-600">Find answers to common admission queries</p>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white rounded-lg card-shadow overflow-hidden">
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 pr-8">{faq.question}</h3>
+                  {openFAQ === index ? (
+                    <ChevronUp className="h-5 w-5 text-college-blue flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                  )}
+                </button>
+                {openFAQ === index && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-700">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Contact */}
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
+            <p className="text-lg text-gray-600">Our admissions team is here to help</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-lg card-shadow text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-college-blue text-white rounded-full mb-6">
+                <Phone className="h-8 w-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Call Us</h3>
+              <p className="text-gray-600 mb-2">Admissions Office</p>
+              <a href="tel:+880258154893" className="text-college-blue font-semibold text-lg hover:underline">
+                +880-2-58154893
+              </a>
+              <p className="text-sm text-gray-500 mt-2">Mon-Fri: 9:00 AM - 5:00 PM</p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg card-shadow text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-college-blue text-white rounded-full mb-6">
+                <Mail className="h-8 w-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Email Us</h3>
+              <p className="text-gray-600 mb-2">Admissions Enquiries</p>
+              <a href="mailto:admissions@aushnaracollege.edu.bd" className="text-college-blue font-semibold hover:underline break-all">
+                admissions@aushnaracollege.edu.bd
+              </a>
+              <p className="text-sm text-gray-500 mt-2">Response within 24 hours</p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg card-shadow text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-college-blue text-white rounded-full mb-6">
+                <MapPin className="h-8 w-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Visit Us</h3>
+              <p className="text-gray-600 mb-2">Admissions Office</p>
+              <p className="text-gray-800 font-medium">23/A, Dhanmondi R/A</p>
+              <p className="text-gray-800">Dhaka-1205, Bangladesh</p>
+              <p className="text-sm text-gray-500 mt-2">Open for campus tours</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Primary CTA Section */}
+      <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Don't miss this opportunity to join Bangladesh's premier educational institution. 
-            Applications close on April 30, 2026.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200">
-              Apply Online Now
-            </button>
-            <a 
-              href="/contact" 
-              className="border-2 border-white text-white hover:bg-white hover:text-college-blue px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200"
-            >
-              Contact Admissions
-            </a>
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Your Future Starts Here</h2>
+            <p className="text-xl md:text-2xl text-blue-100 mb-4">
+              Join 2,847+ students building successful careers at Aushnara College
+            </p>
+            <p className="text-lg text-blue-200 mb-10">
+              ⏰ Applications close on <span className="font-bold text-white">February 28, 2026</span> — Don't miss out!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-10 py-4 rounded-lg font-bold text-xl transition-all duration-200 transform hover:scale-105 shadow-lg w-full sm:w-auto">
+                🎓 Apply Online Now
+              </button>
+              <a 
+                href="/contact" 
+                className="border-2 border-white text-white hover:bg-white hover:text-college-blue px-10 py-4 rounded-lg font-bold text-xl transition-all duration-200 w-full sm:w-auto"
+              >
+                📞 Contact Admissions
+              </a>
+            </div>
+            <p className="text-sm text-blue-200 mt-6">
+              ✓ Online application • ✓ Instant confirmation • ✓ 24/7 status tracking
+            </p>
           </div>
         </div>
       </section>
