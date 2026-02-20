@@ -1,5 +1,7 @@
 import React from 'react'
-import { BookOpen, Users, Calendar, Award, Star, Building2, Microscope, Calculator } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
+import { BookOpen, Users, Calendar, Award, Star, Building2, Microscope, Calculator, TrendingUp, Briefcase, DollarSign, Globe, CheckCircle, ArrowRight, GraduationCap } from 'lucide-react'
 
 function UndergraduatePrograms() {
   const faculties = [
@@ -129,8 +131,120 @@ function UndergraduatePrograms() {
     }
   ]
 
+  const careerHighlights = [
+    {
+      faculty: "Engineering",
+      avgSalary: "৳45,000 - ৳85,000",
+      topRoles: ["Software Engineer", "Project Engineer", "R&D Specialist"],
+      employmentRate: "98%",
+      topEmployers: ["Google", "Microsoft", "Samsung", "Walton", "Brain Station 23"]
+    },
+    {
+      faculty: "Business",
+      avgSalary: "৳35,000 - ৳65,000",
+      topRoles: ["Business Analyst", "Financial Consultant", "Marketing Manager"],
+      employmentRate: "95%",
+      topEmployers: ["Unilever", "Grameenphone", "BRAC", "City Bank", "Deloitte"]
+    },
+    {
+      faculty: "Medicine",
+      avgSalary: "৳50,000 - ৳120,000",
+      topRoles: ["Medical Officer", "Consultant", "Research Associate"],
+      employmentRate: "99%",
+      topEmployers: ["Square Hospital", "BIRDEM", "Apollo", "United Hospital"]
+    },
+    {
+      faculty: "Science",
+      avgSalary: "৳30,000 - ৳60,000",
+      topRoles: ["Research Scientist", "Lab Analyst", "Data Scientist"],
+      employmentRate: "92%",
+      topEmployers: ["ICDDR,B", "BCSIR", "Universities", "Pharma Companies"]
+    }
+  ]
+
+  const whyChoose = [
+    {
+      icon: GraduationCap,
+      title: "World-Class Faculty",
+      description: "Learn from 1,247 experienced professors, 85% with PhD degrees from top universities"
+    },
+    {
+      icon: Globe,
+      title: "Global Partnerships",
+      description: "Exchange programs with 50+ universities in USA, UK, Canada, Australia, and Europe"
+    },
+    {
+      icon: Briefcase,
+      title: "98.3% Employment Rate",
+      description: "Outstanding placement record with top local and multinational companies"
+    },
+    {
+      icon: TrendingUp,
+      title: "Research Excellence",
+      description: "৳150 crore annual research funding • 800+ publications yearly in top journals"
+    }
+  ]
+
+  const researchHighlights = [
+    "50+ active research centers and laboratories",
+    "800+ peer-reviewed publications annually",
+    "৳150 crore research grants from national and international agencies",
+    "Partnerships with MIT, Oxford, Cambridge, and 45+ global institutions",
+    "Student research opportunities from 1st year",
+    "Annual undergraduate research conference"
+  ]
+
+  const alumniSuccesses = [
+    {
+      name: "Dr. Nafisa Rahman",
+      program: "Computer Science & Engineering",
+      achievement: "Senior Software Engineer at Google, USA",
+      quote: "The rigorous curriculum and research opportunities prepared me for global competition."
+    },
+    {
+      name: "Imran Hossain",
+      program: "Business Administration",
+      achievement: "CEO of a leading fintech startup (Raised $5M)",
+      quote: "The entrepreneurship focus helped me turn my idea into a successful business."
+    },
+    {
+      name: "Dr. Tahmina Akter",
+      program: "Medicine (MBBS)",
+      achievement: "Chief Surgeon at Square Hospital",
+      quote: "World-class clinical training and mentorship shaped my medical career."
+    }
+  ]
+
   return (
-    <div className="pt-8">
+    <>
+      <Helmet>
+        <title>Undergraduate Programs - Aushnara College</title>
+        <meta name="description" content="110+ Bachelor's degree programs across 9 faculties. 98.3% employment rate. World-class faculty with PhD degrees. Engineering, Medicine, Business, Science & more." />
+        <meta name="keywords" content="undergraduate programs Bangladesh, bachelor degree, engineering degree, medical degree, BBA, CSE, MBBS, undergraduate admission" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="110+ Undergraduate Programs - Aushnara College" />
+        <meta property="og:description" content="World-class bachelor's degrees with 98.3% employment rate. 9 faculties • 36,420 students • Global partnerships." />
+        <meta property="og:type" content="website" />
+        
+        {/* Schema.org */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Aushnara College - Undergraduate Programs",
+            "description": "110+ undergraduate degree programs across 9 faculties",
+            "numberOfStudents": "36420",
+            "offers": {
+              "@type": "Offer",
+              "category": "Undergraduate Programs",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+        </script>
+      </Helmet>
+
+      <div className="pt-8">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,7 +392,188 @@ function UndergraduatePrograms() {
           </div>
         </div>
       </section>
+
+      {/* Why Choose */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why Choose Our Undergraduate Programs?
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Join 36,420 students pursuing excellence at Bangladesh's leading college
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyChoose.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-2 border-blue-200 text-center">
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-600 text-white rounded-full mb-4">
+                    <Icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-700 text-sm">{item.description}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Career Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Career Outcomes by Faculty
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Real data from our 2025 graduate survey (3,800+ respondents)
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {careerHighlights.map((outcome, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 card-shadow">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-xl font-bold text-gray-900">Faculty of {outcome.faculty}</h3>
+                  <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
+                    {outcome.employmentRate}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
+                      <DollarSign className="w-5 h-5 text-green-600" />
+                      Average Starting Salary (Per Month)
+                    </div>
+                    <div className="text-2xl font-bold text-blue-600">{outcome.avgSalary}</div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
+                      <Briefcase className="w-5 h-5 text-blue-600" />
+                      Top Job Roles
+                    </div>
+                    <div className="space-y-1">
+                      {outcome.topRoles.map((role, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-gray-600">
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          {role}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
+                      <Building2 className="w-5 h-5 text-purple-600" />
+                      Top Employers
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {outcome.topEmployers.map((employer, idx) => (
+                        <span key={idx} className="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">
+                          {employer}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Research Excellence */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
+                <Star className="w-8 h-8 text-purple-600" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Research Excellence
+              </h2>
+              <p className="text-lg text-gray-600">
+                Undergraduate students actively participate in cutting-edge research
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-8 border-2 border-purple-200">
+              <ul className="space-y-4">
+                {researchHighlights.map((highlight, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-800 text-lg">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Alumni Success Stories */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Alumni Success Stories
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our graduates are leaders in their fields worldwide
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {alumniSuccesses.map((story, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 card-shadow">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">
+                  {story.name.charAt(0)}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{story.name}</h3>
+                <div className="text-sm text-blue-600 font-semibold mb-2">{story.program}</div>
+                <div className="text-gray-700 font-semibold mb-3">{story.achievement}</div>
+                <p className="text-gray-600 italic">"{story.quote}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Begin Your Academic Journey
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            Join 36,420 students in 110+ undergraduate programs • 98.3% employment rate • Global partnerships
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/admissions"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-lg"
+            >
+              Apply for Admission
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              to="/scholarships"
+              className="inline-flex items-center justify-center gap-2 bg-blue-500/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-500/30 transition-all border border-white/20"
+            >
+              Explore Scholarships
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
+    </>
   )
 }
 
