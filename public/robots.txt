@@ -1,13 +1,13 @@
 # robots.txt for https://aushnaracollege.edu.bd
+# Policy: Balanced (Option B) - Allow search & discovery, selective AI crawlers
+# Last updated: 2026-02-20
 
+# Standard search engines - full access
 User-agent: *
 Allow: /
 
-# AI/search-related crawlers (kept open for discovery and citation visibility)
+# AI search & discovery agents (citation-friendly, non-training focused)
 User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
@@ -16,7 +16,28 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: ClaudeBot
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+# AI training-focused crawlers - restricted (balanced approach)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+# Sitemap
 Sitemap: https://aushnaracollege.edu.bd/sitemap.xml
+Sitemap: https://aushnaracollege.edu.bd/llms.txt
