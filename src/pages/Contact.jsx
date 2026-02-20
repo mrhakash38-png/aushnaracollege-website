@@ -322,23 +322,43 @@ function Contact() {
               </form>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map + Visit Actions */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Find Us</h2>
-              <div className="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 font-medium">Interactive Map Coming Soon</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Aushnara College<br />
-                    23/A, Dhanmondi R/A, Dhaka-1205<br />
-                    Bangladesh
-                  </p>
-                </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Visit Our Campus</h2>
+
+              <div className="rounded-xl overflow-hidden shadow-xl border border-gray-200 bg-white">
+                <iframe
+                  title="Aushnara College Location"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=90.3660%2C23.7430%2C90.3790%2C23.7560&layer=mapnik&marker=23.7495%2C90.3725"
+                  className="w-full h-96"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
+              <div className="mt-4 grid sm:grid-cols-2 gap-4">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Aushnara+College,+Dhanmondi,+Dhaka"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-college-blue text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  <MapPin className="h-4 w-4 mr-2" />
+                  Open in Google Maps
+                </a>
+                <a
+                  href="https://www.openstreetmap.org/?mlat=23.7495&mlon=90.3725#map=16/23.7495/90.3725"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center border border-college-blue text-college-blue px-4 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                >
+                  <MapPin className="h-4 w-4 mr-2" />
+                  Open in OpenStreetMap
+                </a>
               </div>
 
               {/* Directions */}
-              <div className="mt-8 bg-white p-6 rounded-lg card-shadow">
+              <div className="mt-8 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">How to Reach Us</h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">

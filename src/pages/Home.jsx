@@ -9,8 +9,12 @@ import {
   Star,
   Calendar,
   Trophy,
-  Globe,
-  Building2
+  Building2,
+  GraduationCap,
+  CheckCircle2,
+  TrendingUp,
+  Sparkles,
+  Shield
 } from 'lucide-react'
 
 function Home() {
@@ -64,45 +68,134 @@ function Home() {
 
   return (
     <div className="overflow-hidden">
-      {/* Hero Section */}
-      <section className="hero-gradient text-white py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section - Premium Design */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-24 lg:py-32">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-college-gold rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow">
-              Welcome to <br className="md:hidden" />
-              <span className="text-college-gold">Aushnara College</span>
+            {/* Trust Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 mb-8">
+              <Shield className="h-4 w-4 text-college-gold" />
+              <span className="text-sm font-semibold">Established 2001 • 23+ Years of Excellence</span>
+              <Star className="h-4 w-4 text-college-gold fill-college-gold" />
+            </div>
+
+            {/* Main Heading */}
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+              <span className="block mb-2">Excellence in Education</span>
+              <span className="bg-gradient-to-r from-college-gold via-yellow-300 to-college-gold bg-clip-text text-transparent">
+                Shaping Future Leaders
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-              Bangladesh's Premier Educational Institution • 310+ Programs • 47,520+ Students • World-Class Faculty
+
+            {/* Subheading with Icons */}
+            <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto text-blue-100 leading-relaxed">
+              Join 47,520+ students at Bangladesh's most trusted educational institution. 
+              <span className="block mt-2 font-semibold text-white">310+ Programs • World-Class Faculty • 98.7% Success Rate</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            {/* Trust Signals */}
+            <div className="flex flex-wrap justify-center gap-6 mb-10">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                <CheckCircle2 className="h-5 w-5 text-green-400" />
+                <span className="text-sm font-medium">Govt. Approved</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                <Trophy className="h-5 w-5 text-college-gold" />
+                <span className="text-sm font-medium">Award Winning</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                <TrendingUp className="h-5 w-5 text-blue-400" />
+                <span className="text-sm font-medium">97.3% Pass Rate</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                <Users className="h-5 w-5 text-purple-400" />
+                <span className="text-sm font-medium">2,847+ HSC Students</span>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link 
                 to="/admissions" 
-                className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 inline-flex items-center justify-center"
+                className="group bg-gradient-to-r from-college-gold to-yellow-500 hover:from-yellow-500 hover:to-college-gold text-gray-900 px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105"
               >
-                Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+                <Sparkles className="mr-2 h-5 w-5" />
+                Apply for Admission 2026-27
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
-                to="/about" 
-                className="border-2 border-white text-white hover:bg-white hover:text-college-blue px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200"
+                to="/programs" 
+                className="group border-2 border-white/50 text-white hover:bg-white hover:text-college-blue px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 backdrop-blur-sm hover:border-white inline-flex items-center"
               >
-                Learn More
+                Explore Programs
+                <BookOpen className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
               </Link>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="mt-12 pt-12 border-t border-white/20">
+              <p className="text-sm text-blue-200 mb-4">Trusted by thousands of students and parents across Bangladesh</p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="h-4 w-4 text-green-400" />
+                  Free Campus Tours
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="h-4 w-4 text-green-400" />
+                  Scholarships Available
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="h-4 w-4 text-green-400" />
+                  Expert Career Counseling
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="h-4 w-4 text-green-400" />
+                  24/7 Support
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
+      {/* Stats Section - Enhanced */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg card-shadow">
-                <div className="text-3xl md:text-4xl font-bold text-college-blue mb-2">
-                  {stat.number}
+              <div 
+                key={index} 
+                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+              >
+                {/* Decorative gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                {/* Icon based on stat type */}
+                <div className="relative mb-4">
+                  {index === 0 && <Users className="h-8 w-8 text-blue-500 mx-auto" />}
+                  {index === 1 && <GraduationCap className="h-8 w-8 text-purple-500 mx-auto" />}
+                  {index === 2 && <BookOpen className="h-8 w-8 text-green-500 mx-auto" />}
+                  {index === 3 && <Trophy className="h-8 w-8 text-yellow-500 mx-auto" />}
                 </div>
-                <div className="text-gray-600">{stat.label}</div>
+                
+                <div className="relative text-center">
+                  <div className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-3">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-700 font-semibold text-sm uppercase tracking-wide">
+                    {stat.label}
+                  </div>
+                </div>
+
+                {/* Animated shine effect */}
+                <div className="absolute inset-0 -top-full group-hover:top-full bg-gradient-to-b from-transparent via-white/20 to-transparent transition-all duration-1000"></div>
               </div>
             ))}
           </div>
