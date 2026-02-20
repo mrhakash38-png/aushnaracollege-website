@@ -50,6 +50,8 @@ function Footer() {
               <li><Link to="/about" className="text-blue-100 hover:text-white">About Us</Link></li>
               <li><Link to="/programs" className="text-blue-100 hover:text-white">Academic Programs</Link></li>
               <li><Link to="/admissions" className="text-blue-100 hover:text-white">Admissions</Link></li>
+              <li><Link to="/scholarships" className="text-blue-100 hover:text-white">Scholarships</Link></li>
+              <li><Link to="/admissions-bengali" className="text-blue-100 hover:text-white">ভর্তি তথ্য (বাংলা)</Link></li>
               <li><Link to="/contact" className="text-blue-100 hover:text-white">Contact</Link></li>
             </ul>
           </div>

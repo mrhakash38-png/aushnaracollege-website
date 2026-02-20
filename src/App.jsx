@@ -10,6 +10,8 @@ import Programs from './pages/Programs'
 import UndergraduatePrograms from './pages/UndergraduatePrograms'
 import DiplomaPrograms from './pages/DiplomaPrograms'
 import Admissions from './pages/Admissions'
+import AdmissionsBengali from './pages/AdmissionsBengali'
+import Scholarships from './pages/Scholarships'
 import Contact from './pages/Contact'
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
               <Route path="/undergraduate-programs" element={<UndergraduatePrograms />} />
               <Route path="/diploma-programs" element={<DiplomaPrograms />} />
               <Route path="/admissions" element={<Admissions />} />
+              <Route path="/admissions-bengali" element={<AdmissionsBengali />} />
+              <Route path="/scholarships" element={<Scholarships />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
