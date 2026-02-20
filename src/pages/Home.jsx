@@ -118,7 +118,10 @@ function Home() {
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We are committed to providing world-class education that prepares students 
-              for success in their academic and professional careers.
+              for success in their academic and professional careers. Learn more{' '}
+              <Link to="/about" className="text-college-blue hover:underline font-semibold">
+                about our history and achievements
+              </Link>.
             </p>
           </div>
 
@@ -147,9 +150,15 @@ function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Academic Excellence Across All Disciplines
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 mb-4">
               310+ Programs | 9 Faculties | 45 Departments | World-Class Education
             </p>
+            <Link 
+              to="/programs" 
+              className="inline-flex items-center text-college-blue font-semibold hover:text-blue-800"
+            >
+              View All Programs <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -259,13 +268,22 @@ function Home() {
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Take the first step towards an excellent education. Apply today and become part of our legacy.
+            Have questions? <Link to="/contact" className="underline hover:text-white">Contact our admissions team</Link>.
           </p>
-          <Link 
-            to="/admissions" 
-            className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 inline-flex items-center"
-          >
-            Start Your Application <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              to="/admissions" 
+              className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 inline-flex items-center justify-center"
+            >
+              Start Your Application <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+            <Link 
+              to="/programs" 
+              className="border-2 border-white text-white hover:bg-white hover:text-college-blue px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 inline-flex items-center justify-center"
+            >
+              Explore Programs
+            </Link>
+          </div>
         </div>
       </section>
     </div>
