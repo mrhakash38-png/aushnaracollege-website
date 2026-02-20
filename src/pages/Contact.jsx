@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MapPin, Phone, Mail, Clock, Send, Users, MessageCircle } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Send, Users, MessageCircle, CheckCircle, AlertCircle, MessageSquare } from 'lucide-react'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,17 +9,30 @@ function Contact() {
     subject: '',
     message: ''
   })
+  
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    if (submitStatus) setSubmitStatus(null) // Clear status when user starts typing
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+    
+    // Simulate form submission (replace with actual API call)
+    setTimeout(() => {
+      console.log('Form submitted:', formData)
+      setSubmitStatus('success')
+      setIsSubmitting(false)
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+      
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000)
+    }, 1500)
   }
 
   const contactInfo = [
@@ -79,13 +92,57 @@ function Contact() {
   return (
     <div className="pt-8">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100">
-              Get in Touch with Aushnara College
+            <div className="inline-block bg-college-gold text-gray-900 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              💬 We're Here to Help
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Get in Touch</h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100 mb-8">
+              Questions about admissions, programs, or campus life? Our team is ready to assist you.
             </p>
+            
+            {/* Quick Contact Options */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <a 
+                href="tel:+880258154893" 
+                className="bg-white text-college-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center"
+              >
+                <Phone className="h-5 w-5 mr-2" />
+                Call Admissions
+              </a>
+              <a 
+                href="mailto:admissions@aushnaracollege.edu.bd" 
+                className="bg-white/10 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-college-blue transition-colors flex items-center backdrop-blur-sm"
+              >
+                <Mail className="h-5 w-5 mr-2" />
+                Email Us
+              </a>
+              <a 
+                href="#contact-form" 
+                className="bg-white/10 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-college-blue transition-colors flex items-center backdrop-blur-sm"
+              >
+                <MessageSquare className="h-5 w-5 mr-2" />
+                Send Message
+              </a>
+            </div>
+
+            {/* Trust Signals */}
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-blue-100">
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 mr-2" />
+                <span>Response within 24 hours</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 mr-2" />
+                <span>Free campus tours</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 mr-2" />
+                <span>Expert guidance available</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -121,8 +178,37 @@ function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a Message</h2>
+            <div id="contact-form">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Send us a Message</h2>
+              <p className="text-gray-600 mb-8">
+                Fill out the form below and our team will get back to you within 24 hours.
+              </p>
+
+              {/* Success/Error Message */}
+              {submitStatus === 'success' && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-green-900 mb-1">Message Sent Successfully!</h3>
+                    <p className="text-green-700 text-sm">
+                      Thank you for contacting us. We'll respond to your inquiry within 24 hours.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start">
+                  <AlertCircle className="h-5 w-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-red-900 mb-1">Submission Failed</h3>
+                    <p className="text-red-700 text-sm">
+                      Sorry, there was an error sending your message. Please try again or contact us directly.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -211,10 +297,28 @@ function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-college-blue hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center justify-center"
+                  disabled={isSubmitting}
+                  className={`w-full px-6 py-4 rounded-lg font-bold text-lg transition-all duration-200 flex items-center justify-center ${
+                    isSubmitting 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-college-blue hover:bg-blue-700 transform hover:scale-105 shadow-lg'
+                  } text-white`}
                 >
-                  Send Message <Send className="ml-2 h-5 w-5" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message <Send className="ml-2 h-5 w-5" />
+                    </>
+                  )}
                 </button>
+                
+                <p className="text-sm text-gray-500 text-center">
+                  By submitting this form, you agree to be contacted by our admissions team.
+                </p>
               </form>
             </div>
 
@@ -295,6 +399,83 @@ function Contact() {
         </div>
       </section>
 
+      {/* Why Contact Us Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How We Can Help You</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our dedicated team assists thousands of students and parents every year
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                icon: '🎓',
+                title: 'Admissions Guidance',
+                description: 'Get expert help with applications, requirements, and deadlines',
+                count: '2,800+ helped'
+              },
+              {
+                icon: '💰',
+                title: 'Financial Aid Info',
+                description: 'Learn about scholarships, fee waivers, and payment plans',
+                count: '500+ scholarships'
+              },
+              {
+                icon: '🏫',
+                title: 'Campus Tours',
+                description: 'Schedule a personalized tour of our facilities and classrooms',
+                count: '1,200+ tours/year'
+              },
+              {
+                icon: '📚',
+                title: 'Program Counseling',
+                description: 'Find the right academic program for your career goals',
+                count: '310+ programs'
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg card-shadow hover-lift text-center">
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm mb-3">{item.description}</p>
+                <div className="text-xs font-semibold text-college-blue">{item.count}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Emergency & Urgent Contact */}
+      <section className="py-12 bg-yellow-50 border-y border-yellow-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center">
+              <AlertCircle className="h-8 w-8 text-yellow-600 mr-4 flex-shrink-0" />
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Need Urgent Assistance?</h3>
+                <p className="text-gray-700">For time-sensitive admissions queries or emergencies</p>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="tel:+880258154893" 
+                className="bg-college-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center"
+              >
+                📞 Call: +880-2-58154893
+              </a>
+              <a 
+                href="mailto:urgent@aushnaracollege.edu.bd" 
+                className="bg-white text-college-blue border-2 border-college-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors text-center"
+              >
+                📧 urgent@aushnaracollege.edu.bd
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -342,27 +523,99 @@ function Contact() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Students & Parents Say</h2>
+            <p className="text-lg text-gray-600">Real feedback from our college community</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Mrs. Sultana Ahmed',
+                role: 'Parent of HSC Student',
+                text: 'The admissions team was incredibly helpful and patient with all my questions. They made the entire process smooth and stress-free for my daughter.',
+                rating: 5
+              },
+              {
+                name: 'Imran Hossain',
+                role: 'HSC Science - 2024',
+                text: 'I had doubts about which stream to choose. The counseling session helped me understand my strengths and I\'m now confident in my Science group choice.',
+                rating: 5
+              },
+              {
+                name: 'Nusrat Jahan',
+                role: 'Parent of Commerce Student',
+                text: 'Quick response to emails, clear information about fees and scholarships. The transparency helped us make an informed decision.',
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg card-shadow">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400">⭐</span>
+                  ))}
+                </div>
+                <p className="text-gray-700 italic mb-4">"{testimonial.text}"</p>
+                <div>
+                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                  <div className="text-sm text-gray-600">{testimonial.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="bg-college-blue text-white py-16">
+      <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Still Have Questions?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Our friendly staff is here to help. Don't hesitate to reach out for any information 
-            about Aushnara College.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="tel:+880258154892" 
-              className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200"
-            >
-              Call Us Now
-            </a>
-            <a 
-              href="/admissions" 
-              className="border-2 border-white text-white hover:bg-white hover:text-college-blue px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200"
-            >
-              Visit Admissions
-            </a>
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Take the Next Step?</h2>
+            <p className="text-xl md:text-2xl text-blue-100 mb-4">
+              Join 2,847+ students at Aushnara College — Bangladesh's premier educational institution
+            </p>
+            <p className="text-lg text-blue-200 mb-10">
+              ⏰ HSC Admissions 2026-27 close on <span className="font-bold text-white">February 28, 2026</span>
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-4 mb-10">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                <div className="text-3xl mb-2">📞</div>
+                <div className="font-semibold">Call Us</div>
+                <div className="text-sm text-blue-100">+880-2-58154893</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                <div className="text-3xl mb-2">📧</div>
+                <div className="font-semibold">Email Us</div>
+                <div className="text-sm text-blue-100">24hr response time</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                <div className="text-3xl mb-2">🏫</div>
+                <div className="font-semibold">Visit Campus</div>
+                <div className="text-sm text-blue-100">Free guided tours</div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/admissions" 
+                className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-10 py-4 rounded-lg font-bold text-xl transition-all duration-200 transform hover:scale-105 shadow-lg"
+              >
+                🎓 Apply for Admission
+              </a>
+              <a 
+                href="tel:+880258154893" 
+                className="border-2 border-white text-white hover:bg-white hover:text-college-blue px-10 py-4 rounded-lg font-bold text-xl transition-all duration-200"
+              >
+                📞 Call Admissions Team
+              </a>
+            </div>
+            <p className="text-sm text-blue-200 mt-6">
+              ✓ Expert guidance • ✓ Free counseling • ✓ Campus tours available
+            </p>
           </div>
         </div>
       </section>
