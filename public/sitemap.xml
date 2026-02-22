@@ -1,45 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
   <url>
     <loc>https://aushnaracollege.edu.bd/</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/about</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Programs Overview -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/programs</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Admissions (High Priority) -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/admissions</loc>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Bengali Admissions -->
   <url>
-    <loc>https://aushnaracollege.edu.bd/about</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://aushnaracollege.edu.bd/admissions-bengali</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/contact</loc>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://aushnaracollege.edu.bd/programs</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://aushnaracollege.edu.bd/undergraduate-programs</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
+  <!-- Diploma Programs -->
   <url>
     <loc>https://aushnaracollege.edu.bd/diploma-programs</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Undergraduate Programs -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/undergraduate-programs</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Scholarships -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/scholarships</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://aushnaracollege.edu.bd/admissions</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://aushnaracollege.edu.bd/contact</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
 </urlset>
