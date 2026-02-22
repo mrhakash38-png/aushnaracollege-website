@@ -265,14 +265,29 @@ function DiplomaPrograms() {
   return (
     <>
       <Helmet>
-        <title>Diploma Programs - Aushnara College</title>
+        <title>216+ Diploma Programs | Career-Ready Training | Aushnara College</title>
         <meta name="description" content="216+ professional diploma programs across 8 categories. 96.8% placement rate. Engineering, IT, Business, Healthcare, Agriculture, Arts & more. Apply now!" />
-        <meta name="keywords" content="diploma programs Bangladesh, technical diploma, engineering diploma, IT diploma, business diploma, healthcare diploma, vocational training" />
+        <meta name="keywords" content="diploma programs Bangladesh, technical diploma, engineering diploma, IT diploma, business diploma, healthcare diploma, vocational training, career training, professional courses" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://aushnaracollege.edu.bd/diploma-programs" />
         
         {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aushnaracollege.edu.bd/diploma-programs" />
         <meta property="og:title" content="216+ Diploma Programs - Aushnara College" />
         <meta property="og:description" content="Professional diplomas with 96.8% placement rate. Industry-focused training across Engineering, IT, Business, Healthcare & more." />
-        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://aushnaracollege.edu.bd/og-diploma.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://aushnaracollege.edu.bd/diploma-programs" />
+        <meta name="twitter:title" content="216+ Diploma Programs - Aushnara College" />
+        <meta name="twitter:description" content="Professional diplomas with 96.8% placement rate. Industry-focused training." />
+        <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-diploma.jpg" />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
         
         {/* Schema.org */}
         <script type="application/ld+json">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Calendar, FileText, DollarSign, CheckCircle, AlertCircle, Clock, Users, Award, Download, Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react'
 
 function Admissions() {
@@ -173,6 +174,57 @@ function Admissions() {
 
   return (
     <div className="pt-8">
+      <Helmet>
+        <title>HSC Admission 2026-27 - Apply Now | Aushnara College</title>
+        <meta name="description" content="Apply for HSC admission 2026-27 at Aushnara College. Science, Commerce & Arts programs. Application deadline: Feb 28, 2026. 97.3% pass rate, scholarships available. Online & offline application accepted." />
+        <meta name="keywords" content="HSC admission 2026, college admission Bangladesh, Aushnara admission, apply HSC, admission process, admission fee, scholarship, application form, merit list, admission test" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://aushnaracollege.edu.bd/admissions" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aushnaracollege.edu.bd/admissions" />
+        <meta property="og:title" content="HSC Admission 2026-27 - Apply Now | Aushnara College" />
+        <meta property="og:description" content="Apply for HSC admission 2026-27. Science, Commerce & Arts. Application open till Feb 28. 97.3% pass rate. Scholarships available." />
+        <meta property="og:image" content="https://aushnaracollege.edu.bd/og-admissions.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://aushnaracollege.edu.bd/admissions" />
+        <meta name="twitter:title" content="HSC Admission 2026-27 - Apply Now" />
+        <meta name="twitter:description" content="Apply for HSC admission. Science, Commerce & Arts. 97.3% pass rate. Deadline: Feb 28, 2026." />
+        <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-admissions.jpg" />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
+        
+        {/* Schema.org structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Admissions",
+            "description": "HSC admission process and requirements for Aushnara College",
+            "provider": {
+              "@type": "CollegeOrUniversity",
+              "name": "Aushnara College"
+            },
+            "offers": {
+              "@type": "EducationalOccupationalProgram",
+              "name": "HSC Programs",
+              "description": "Higher Secondary Certificate programs in Science, Commerce, and Arts",
+              "provider": {
+                "@type": "CollegeOrUniversity",
+                "name": "Aushnara College"
+              },
+              "timeToComplete": "P2Y",
+              "applicationDeadline": "2026-02-28"
+            }
+          })}
+        </script>
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import { BookOpen, Users, Award, ArrowRight, Building2, GraduationCap, Star, Calculator, Microscope, Computer } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -76,8 +77,100 @@ function Programs() {
     { number: '98.2%', label: 'Overall Success Rate', description: 'Graduate employment and education' }
   ]
 
+  const faqs = [
+    {
+      question: "How do I choose the right program for my career goals?",
+      answer: "Consider your interests, career aspirations, and academic strengths. Our admissions counselors offer free career guidance sessions to help you select the best program. You can also explore our program pages for detailed career outcome data, salary projections, and alumni success stories."
+    },
+    {
+      question: "What is the difference between Undergraduate and Diploma programs?",
+      answer: "Undergraduate programs (Bachelor's degrees) typically last 4 years and provide comprehensive theoretical and practical education with research opportunities. Diploma programs are 1-3 year professional courses focused on industry-ready skills and immediate employment. Diplomas are ideal for quick career entry, while undergraduate degrees offer broader academic depth."
+    },
+    {
+      question: "What are the eligibility requirements for admission?",
+      answer: "For HSC programs: SSC/equivalent pass required. For Undergraduate programs: HSC/equivalent with minimum GPA requirements (varies by program, typically 3.0-4.5). For Diploma programs: SSC/HSC pass depending on course level. Specific programs may have additional requirements like subject prerequisites or entrance exams."
+    },
+    {
+      question: "How long does each program take to complete?",
+      answer: "HSC programs: 2 years. Undergraduate programs: 4 years (some professional degrees like MBBS take 5 years). Diploma programs: 1-3 years depending on the course level and specialization. All durations include examinations and practical training components."
+    },
+    {
+      question: "What career opportunities are available after graduation?",
+      answer: "Our programs have excellent employment outcomes: Undergraduate graduates achieve 98.3% employment rate within 6 months, with average starting salaries of ৳45,000-৳85,000/month. Diploma graduates have 96.8% placement rate with ৳25,000-৳55,000/month starting salaries. We have partnerships with 150+ leading companies for campus recruitment."
+    },
+    {
+      question: "Can I transfer credits from another institution?",
+      answer: "Yes, we accept credit transfers from accredited institutions for undergraduate programs. Transfers are evaluated case-by-case by our academic committee. You'll need to submit official transcripts and course syllabi for review. Typically, up to 50% of credits can be transferred depending on course equivalency and grades."
+    }
+  ]
+
   return (
     <div className="pt-8">
+      <Helmet>
+        <title>Academic Programs - HSC, Undergraduate & Diploma | Aushnara College</title>
+        <meta name="description" content="Explore 310+ academic programs at Aushnara College. HSC (Science, Commerce, Arts), 110+ Undergraduate degrees, 216+ Diploma courses. Choose from Engineering, Business, Medicine, IT, and more." />
+        <meta name="keywords" content="aushnara programs, HSC science commerce arts, undergraduate programs, diploma courses, engineering degree, business programs, medical courses, computer science, Bangladesh education" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://aushnaracollege.edu.bd/programs" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aushnaracollege.edu.bd/programs" />
+        <meta property="og:title" content="310+ Academic Programs | Aushnara College" />
+        <meta property="og:description" content="Choose from HSC, 110+ Undergraduate, and 216+ Diploma programs. Engineering, Business, Medicine, IT, and more. 98.7% success rate." />
+        <meta property="og:image" content="https://aushnaracollege.edu.bd/og-programs.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://aushnaracollege.edu.bd/programs" />
+        <meta name="twitter:title" content="310+ Academic Programs | Aushnara College" />
+        <meta name="twitter:description" content="Choose from HSC, 110+ Undergraduate, and 216+ Diploma programs. 98.7% success rate." />
+        <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-programs.jpg" />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
+        
+        {/* Schema.org structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Academic Programs at Aushnara College",
+            "description": "Comprehensive list of 310+ academic programs",
+            "itemListElement": programCategories.map((category, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Course",
+                "name": category.name,
+                "description": category.description,
+                "provider": {
+                  "@type": "CollegeOrUniversity",
+                  "name": "Aushnara College"
+                }
+              }
+            }))
+          })}
+        </script>
+
+        {/* FAQ Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })}
+        </script>
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -368,6 +461,116 @@ function Programs() {
                 <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-gray-600">
+              Common questions about our academic programs
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  How do I choose the right program for my career goals?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Consider your interests, career aspirations, and academic strengths. Our admissions counselors offer free career guidance sessions to help you select the best program. You can also explore our program pages for detailed career outcome data, salary projections, and alumni success stories.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  What is the difference between Undergraduate and Diploma programs?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Undergraduate programs (Bachelor's degrees) typically last 4 years and provide comprehensive theoretical and practical education with research opportunities. Diploma programs are 1-3 year professional courses focused on industry-ready skills and immediate employment. Diplomas are ideal for quick career entry, while undergraduate degrees offer broader academic depth.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  What are the eligibility requirements for admission?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                For HSC programs: SSC/equivalent pass required. For Undergraduate programs: HSC/equivalent with minimum GPA requirements (varies by program, typically 3.0-4.5). For Diploma programs: SSC/HSC pass depending on course level. Specific programs may have additional requirements like subject prerequisites or entrance exams.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  How long does each program take to complete?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                HSC programs: 2 years. Undergraduate programs: 4 years (some professional degrees like MBBS take 5 years). Diploma programs: 1-3 years depending on the course level and specialization. All durations include examinations and practical training components.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  What career opportunities are available after graduation?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Our programs have excellent employment outcomes: Undergraduate graduates achieve 98.3% employment rate within 6 months, with average starting salaries of ৳45,000-৳85,000/month. Diploma graduates have 96.8% placement rate with ৳25,000-৳55,000/month starting salaries. We have partnerships with 150+ leading companies for campus recruitment.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  Can I transfer credits from another institution?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Yes, we accept credit transfers from accredited institutions for undergraduate programs. Transfers are evaluated case-by-case by our academic committee. You'll need to submit official transcripts and course syllabi for review. Typically, up to 50% of credits can be transferred depending on course equivalency and grades.
+              </p>
+            </details>
+          </div>
+
+          <div className="text-center mt-10">
+            <p className="text-gray-600 mb-4">Still have questions about our programs?</p>
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center text-college-blue hover:text-blue-800 font-semibold"
+            >
+              Contact our academic advisors <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

@@ -218,14 +218,29 @@ function UndergraduatePrograms() {
   return (
     <>
       <Helmet>
-        <title>Undergraduate Programs - Aushnara College</title>
+        <title>110+ Undergraduate Programs | Bachelor's Degrees | Aushnara College</title>
         <meta name="description" content="110+ Bachelor's degree programs across 9 faculties. 98.3% employment rate. World-class faculty with PhD degrees. Engineering, Medicine, Business, Science & more." />
-        <meta name="keywords" content="undergraduate programs Bangladesh, bachelor degree, engineering degree, medical degree, BBA, CSE, MBBS, undergraduate admission" />
+        <meta name="keywords" content="undergraduate programs Bangladesh, bachelor degree, engineering degree, medical degree, BBA, CSE, MBBS, undergraduate admission, university programs, higher education" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://aushnaracollege.edu.bd/undergraduate-programs" />
         
         {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aushnaracollege.edu.bd/undergraduate-programs" />
         <meta property="og:title" content="110+ Undergraduate Programs - Aushnara College" />
         <meta property="og:description" content="World-class bachelor's degrees with 98.3% employment rate. 9 faculties • 36,420 students • Global partnerships." />
-        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://aushnaracollege.edu.bd/og-undergraduate.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://aushnaracollege.edu.bd/undergraduate-programs" />
+        <meta name="twitter:title" content="110+ Undergraduate Programs - Aushnara College" />
+        <meta name="twitter:description" content="World-class bachelor's degrees with 98.3% employment rate. 9 faculties, global partnerships." />
+        <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-undergraduate.jpg" />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
         
         {/* Schema.org */}
         <script type="application/ld+json">

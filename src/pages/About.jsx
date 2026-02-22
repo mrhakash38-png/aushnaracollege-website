@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Award, Users, Target, Heart, BookOpen, Building2 } from 'lucide-react'
 
 function About() {
@@ -44,6 +45,60 @@ function About() {
 
   return (
     <div className="pt-8">
+      <Helmet>
+        <title>About Aushnara College | History, Mission & Leadership | Est. 2001</title>
+        <meta name="description" content="Learn about Aushnara College - Bangladesh's premier educational institution since 2001. Our history, mission, vision, and leadership team. 120,000+ students across 310+ programs with 98.7% success rate." />
+        <meta name="keywords" content="about aushnara college, college history, university Bangladesh, educational institution, mission vision, leadership team, college founding, accreditation" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://aushnaracollege.edu.bd/about" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aushnaracollege.edu.bd/about" />
+        <meta property="og:title" content="About Aushnara College | History & Leadership" />
+        <meta property="og:description" content="Discover the story of Bangladesh's premier educational institution since 2001. 120,000+ students, 310+ programs, world-class leadership team." />
+        <meta property="og:image" content="https://aushnaracollege.edu.bd/og-about.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://aushnaracollege.edu.bd/about" />
+        <meta name="twitter:title" content="About Aushnara College | History & Leadership" />
+        <meta name="twitter:description" content="Discover the story of Bangladesh's premier educational institution since 2001. 120,000+ students, 310+ programs." />
+        <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-about.jpg" />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
+        
+        {/* Schema.org structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "mainEntity": {
+              "@type": "CollegeOrUniversity",
+              "name": "Aushnara College",
+              "foundingDate": "2001",
+              "description": "Premier educational institution in Bangladesh offering 310+ programs with 120,000+ students",
+              "numberOfStudents": "120000",
+              "url": "https://aushnaracollege.edu.bd",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "23/A, Dhanmondi R/A",
+                "addressLocality": "Dhaka",
+                "postalCode": "1205",
+                "addressCountry": "BD"
+              },
+              "alumniOf": leadership.map(leader => ({
+                "@type": "Person",
+                "name": leader.name,
+                "jobTitle": leader.position,
+                "description": leader.qualification
+              }))
+            }
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

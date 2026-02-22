@@ -162,14 +162,29 @@ export default function Scholarships() {
   return (
     <>
       <Helmet>
-        <title>Scholarships & Financial Aid - Aushnara College</title>
+        <title>Scholarships & Financial Aid - Up to 100% Tuition Waiver | Aushnara College</title>
         <meta name="description" content="Explore scholarship opportunities at Aushnara College. Merit-based scholarships, need-based financial aid, and special grants available. Up to 100% tuition waiver for eligible students." />
-        <meta name="keywords" content="aushnara college scholarships, financial aid Bangladesh, merit scholarship, need-based aid, tuition waiver, education funding" />
+        <meta name="keywords" content="aushnara college scholarships, financial aid Bangladesh, merit scholarship, need-based aid, tuition waiver, education funding, student grants, scholarship application" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://aushnaracollege.edu.bd/scholarships" />
         
         {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aushnaracollege.edu.bd/scholarships" />
         <meta property="og:title" content="Scholarships & Financial Aid - Aushnara College" />
         <meta property="og:description" content="Up to 100% tuition waiver available. Apply for merit-based scholarships, need-based financial aid, and special grants." />
-        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://aushnaracollege.edu.bd/og-scholarships.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://aushnaracollege.edu.bd/scholarships" />
+        <meta name="twitter:title" content="Scholarships & Financial Aid - Aushnara College" />
+        <meta name="twitter:description" content="Up to 100% tuition waiver. Merit-based, need-based aid & special grants available." />
+        <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-scholarships.jpg" />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
         
         {/* Schema.org */}
         <script type="application/ld+json">

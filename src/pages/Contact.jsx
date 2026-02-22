@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { MapPin, Phone, Mail, Clock, Send, Users, MessageCircle, CheckCircle, AlertCircle, MessageSquare } from 'lucide-react'
 
 function Contact() {
@@ -89,8 +90,102 @@ function Contact() {
     }
   ]
 
+  const faqs = [
+    {
+      question: "What are your office hours?",
+      answer: "Our main office is open Sunday to Thursday, 9:00 AM - 5:00 PM. The Admissions Office operates extended hours during admission season (December-February): Sunday to Thursday 9:00 AM - 7:00 PM, and Saturday 10:00 AM - 4:00 PM. We are closed on Fridays and public holidays."
+    },
+    {
+      question: "How quickly will I receive a response to my inquiry?",
+      answer: "We aim to respond to all email inquiries within 24 hours during business days. Phone inquiries are handled immediately during office hours. For urgent admission-related questions during peak season (January-February), our team provides same-day responses. You can also use our contact form for non-urgent matters."
+    },
+    {
+      question: "Can I visit the campus for a tour?",
+      answer: "Yes! We offer free guided campus tours Monday to Thursday at 10:00 AM and 2:00 PM. Tours last approximately 90 minutes and include visits to classrooms, laboratories, library, sports facilities, and cafeteria. Please call +880-2-58154893 or email admissions@aushnaracollege.edu.bd at least 2 days in advance to book your tour."
+    },
+    {
+      question: "What documents should I bring when visiting the admissions office?",
+      answer: "For admission consultation, please bring: original SSC/HSC certificates and transcripts, passport-size photographs (4 copies), National ID card or birth certificate copy, and guardian's NID copy. For document submission, bring 2 photocopies of all original documents. Our staff will verify originals and retain copies."
+    }
+  ]
+
   return (
     <div className="pt-8">
+      <Helmet>
+        <title>Contact Us - Get in Touch | Aushnara College</title>
+        <meta name="description" content="Contact Aushnara College for admissions, academic inquiries, or campus information. Call +880-2-58154892, email info@aushnaracollege.edu.bd or visit us at Dhanmondi, Dhaka. Office hours: 9 AM - 5 PM." />
+        <meta name="keywords" content="contact aushnara college, college phone number, admission inquiry, campus address, email, office hours, contact form, get in touch, visit campus" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://aushnaracollege.edu.bd/contact" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aushnaracollege.edu.bd/contact" />
+        <meta property="og:title" content="Contact Aushnara College - Get in Touch" />
+        <meta property="og:description" content="Call +880-2-58154892 or email info@aushnaracollege.edu.bd. Visit us at Dhanmondi, Dhaka. We're here to help with admissions and inquiries." />
+        <meta property="og:image" content="https://aushnaracollege.edu.bd/og-contact.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://aushnaracollege.edu.bd/contact" />
+        <meta name="twitter:title" content="Contact Aushnara College" />
+        <meta name="twitter:description" content="Call +880-2-58154892 or visit us at Dhanmondi, Dhaka. We're here to help." />
+        <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-contact.jpg" />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
+        
+        {/* Schema.org structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "mainEntity": {
+              "@type": "CollegeOrUniversity",
+              "name": "Aushnara College",
+              "url": "https://aushnaracollege.edu.bd",
+              "telephone": "+880-2-58154892",
+              "email": "info@aushnaracollege.edu.bd",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "23/A, Dhanmondi R/A",
+                "addressLocality": "Dhaka",
+                "postalCode": "1205",
+                "addressCountry": "BD"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "23.7808875",
+                "longitude": "90.4218063"
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            }
+          })}
+        </script>
+
+        {/* FAQ Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })}
+        </script>
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -585,6 +680,89 @@ function Contact() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-gray-600">
+              Quick answers about contacting Aushnara College
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  What are your office hours?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Our main office is open Sunday to Thursday, 9:00 AM - 5:00 PM. The Admissions Office operates extended hours during admission season (December-February): Sunday to Thursday 9:00 AM - 7:00 PM, and Saturday 10:00 AM - 4:00 PM. We are closed on Fridays and public holidays.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  How quickly will I receive a response to my inquiry?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                We aim to respond to all email inquiries within 24 hours during business days. Phone inquiries are handled immediately during office hours. For urgent admission-related questions during peak season (January-February), our team provides same-day responses. You can also use our contact form for non-urgent matters.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  Can I visit the campus for a tour?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Yes! We offer free guided campus tours Monday to Thursday at 10:00 AM and 2:00 PM. Tours last approximately 90 minutes and include visits to classrooms, laboratories, library, sports facilities, and cafeteria. Please call +880-2-58154893 or email admissions@aushnaracollege.edu.bd at least 2 days in advance to book your tour.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-lg p-6 hover:bg-blue-50 transition-colors duration-200">
+              <summary className="flex items-start justify-between cursor-pointer list-none">
+                <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                  What documents should I bring when visiting the admissions office?
+                </h3>
+                <span className="text-college-blue text-2xl font-bold group-open:rotate-45 transition-transform duration-200">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                For admission consultation, please bring: original SSC/HSC certificates and transcripts, passport-size photographs (4 copies), National ID card or birth certificate copy, and guardian's NID copy. For document submission, bring 2 photocopies of all original documents. Our staff will verify originals and retain copies.
+              </p>
+            </details>
+          </div>
+
+          <div className="text-center mt-10">
+            <p className="text-gray-600 mb-4">Didn't find your answer?</p>
+            <a 
+              href="tel:+88025815489 2"
+              className="inline-flex items-center text-college-blue hover:text-blue-800 font-semibold"
+            >
+              <Phone className="mr-2 h-4 w-4" />
+              Call us at +880-2-58154892
+            </a>
           </div>
         </div>
       </section>
