@@ -43,7 +43,7 @@ function Home() {
   ]
 
   const stats = [
-    { number: '47,520', label: 'Total Students' },
+    { number: '7,520', label: 'Total Students' },
     { number: '1,847', label: 'Faculty & Staff' },
     { number: '310+', label: 'Academic Programs' },
     { number: '98.7%', label: 'Graduate Success Rate' }
@@ -90,7 +90,7 @@ function Home() {
     <div className="overflow-hidden">
       <Helmet>
         <title>Aushnara College | Best College in Bangladesh | Excellence in Education Since 2001</title>
-        <meta name="description" content="Aushnara College - Bangladesh's premier educational institution since 2001. 47,520+ students, 310+ programs, 98.7% success rate. Offering HSC, Undergraduate, Diploma programs. Apply for admission 2026-27." />
+        <meta name="description" content="Aushnara College - Bangladesh's premier educational institution since 2001. 7,520+ students, 310+ programs, 98.7% success rate. Offering HSC, Undergraduate, Diploma programs. Apply for admission 2026-27." />
         <meta name="keywords" content="aushnara college, best college Bangladesh, HSC admission, undergraduate programs, diploma courses, Dhaka college, top college Bangladesh, higher education, college admission 2026" />
         
         {/* Canonical URL */}
@@ -100,7 +100,7 @@ function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aushnaracollege.edu.bd/" />
         <meta property="og:title" content="Aushnara College | Excellence in Education Since 2001" />
-        <meta property="og:description" content="Join 47,520+ students at Bangladesh's most trusted educational institution. 310+ programs, world-class faculty, 98.7% success rate. Apply now for admission 2026-27." />
+        <meta property="og:description" content="Join 7,520+ students at Bangladesh's most trusted educational institution. 310+ programs, world-class faculty, 98.7% success rate. Apply now for admission 2026-27." />
         <meta property="og:image" content="https://aushnaracollege.edu.bd/og-image.jpg" />
         <meta property="og:locale" content="en_BD" />
         <meta property="og:site_name" content="Aushnara College" />
@@ -109,7 +109,7 @@ function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://aushnaracollege.edu.bd/" />
         <meta name="twitter:title" content="Aushnara College | Excellence in Education Since 2001" />
-        <meta name="twitter:description" content="Join 47,520+ students at Bangladesh's most trusted educational institution. 310+ programs, world-class faculty, 98.7% success rate." />
+        <meta name="twitter:description" content="Join 7,520+ students at Bangladesh's most trusted educational institution. 310+ programs, world-class faculty, 98.7% success rate." />
         <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-image.jpg" />
         
         {/* Additional SEO */}
@@ -202,7 +202,7 @@ function Home() {
 
             {/* Subheading with Icons */}
             <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto text-blue-100 leading-relaxed">
-              Join 47,520+ students at Bangladesh's most trusted educational institution. 
+              Join 7,520+ students at Bangladesh's most trusted educational institution. 
               <span className="block mt-2 font-semibold text-white">310+ Programs • World-Class Faculty • 98.7% Success Rate</span>
             </p>
 
