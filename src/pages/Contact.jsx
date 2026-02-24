@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { MapPin, Phone, Mail, Clock, Send, Users, MessageCircle, CheckCircle, AlertCircle, MessageSquare } from 'lucide-react'
+import { ADMISSIONS_CYCLE, CONTACT_INFO } from '../config/siteContent'
+import { formatLongDate } from '../utils/admissionsCycle'
+import { submitContactForm } from '../utils/contactSubmit'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -12,6 +15,7 @@ function Contact() {
   })
   
   const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
+  const [submitMode, setSubmitMode] = useState(null) // 'api' | 'mailto' | null
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
@@ -23,17 +27,20 @@ function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
-    
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-      console.log('Form submitted:', formData)
+    setSubmitMode(null)
+
+    try {
+      const result = await submitContactForm(formData)
       setSubmitStatus('success')
-      setIsSubmitting(false)
+      setSubmitMode(result.mode)
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-      
-      // Auto-hide success message after 5 seconds
+    } catch (error) {
+      setSubmitStatus('error')
+      setSubmitMode(null)
+    } finally {
+      setIsSubmitting(false)
       setTimeout(() => setSubmitStatus(null), 5000)
-    }, 1500)
+    }
   }
 
   const contactInfo = [
@@ -46,13 +53,17 @@ function Contact() {
     {
       icon: Phone,
       title: 'Phone Numbers',
-      details: ['+880-2-58154892 (Main)', '+880-2-58154893 (Admissions)', '+880-2-58154894 (Academic)'],
+      details: [
+        `${CONTACT_INFO.mainPhoneDisplay} (Main)`,
+        `${CONTACT_INFO.admissionsPhoneDisplay} (Admissions)`,
+        `${CONTACT_INFO.academicPhoneDisplay} (Academic)`
+      ],
       color: 'text-green-600'
     },
     {
       icon: Mail,
       title: 'Email Addresses',
-      details: ['info@aushnaracollege.edu.bd', 'admissions@aushnaracollege.edu.bd', 'academic@aushnaracollege.edu.bd'],
+      details: [CONTACT_INFO.infoEmail, CONTACT_INFO.admissionsEmail, CONTACT_INFO.academicEmail],
       color: 'text-purple-600'
     },
     {
@@ -66,25 +77,25 @@ function Contact() {
   const departments = [
     {
       name: 'Principal\'s Office',
-      phone: '+880-2-58154892',
+      phone: CONTACT_INFO.mainPhoneDisplay,
       email: 'principal@aushnaracollege.edu.bd',
       hours: 'Sun-Thu: 9:00 AM - 4:00 PM'
     },
     {
       name: 'Admissions Office',
-      phone: '+880-2-58154893',
-      email: 'admissions@aushnaracollege.edu.bd',
+      phone: CONTACT_INFO.admissionsPhoneDisplay,
+      email: CONTACT_INFO.admissionsEmail,
       hours: 'Sun-Thu: 8:00 AM - 5:00 PM'
     },
     {
       name: 'Academic Office',
-      phone: '+880-2-58154894',
-      email: 'academic@aushnaracollege.edu.bd',
+      phone: CONTACT_INFO.academicPhoneDisplay,
+      email: CONTACT_INFO.academicEmail,
       hours: 'Sun-Thu: 8:30 AM - 4:30 PM'
     },
     {
       name: 'Student Affairs',
-      phone: '+880-2-58154895',
+      phone: CONTACT_INFO.studentAffairsPhoneDisplay,
       email: 'students@aushnaracollege.edu.bd',
       hours: 'Sun-Thu: 8:00 AM - 4:00 PM'
     }
@@ -113,7 +124,7 @@ function Contact() {
     <div className="pt-8">
       <Helmet>
         <title>Contact Us - Get in Touch | Aushnara College</title>
-        <meta name="description" content="Contact Aushnara College for admissions, academic inquiries, or campus information. Call +880-2-58154892, email info@aushnaracollege.edu.bd or visit us at Dhanmondi, Dhaka. Office hours: 9 AM - 5 PM." />
+        <meta name="description" content={`Contact Aushnara College for admissions, academic inquiries, or campus information. Call ${CONTACT_INFO.mainPhoneDisplay}, email ${CONTACT_INFO.infoEmail} or visit us at Dhanmondi, Dhaka. Office hours: 9 AM - 5 PM.`} />
         <meta name="keywords" content="contact aushnara college, college phone number, admission inquiry, campus address, email, office hours, contact form, get in touch, visit campus" />
         
         {/* Canonical URL */}
@@ -123,14 +134,14 @@ function Contact() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aushnaracollege.edu.bd/contact" />
         <meta property="og:title" content="Contact Aushnara College - Get in Touch" />
-        <meta property="og:description" content="Call +880-2-58154892 or email info@aushnaracollege.edu.bd. Visit us at Dhanmondi, Dhaka. We're here to help with admissions and inquiries." />
+        <meta property="og:description" content={`Call ${CONTACT_INFO.mainPhoneDisplay} or email ${CONTACT_INFO.infoEmail}. Visit us at Dhanmondi, Dhaka. We're here to help with admissions and inquiries.`} />
         <meta property="og:image" content="https://aushnaracollege.edu.bd/og-contact.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://aushnaracollege.edu.bd/contact" />
         <meta name="twitter:title" content="Contact Aushnara College" />
-        <meta name="twitter:description" content="Call +880-2-58154892 or visit us at Dhanmondi, Dhaka. We're here to help." />
+        <meta name="twitter:description" content={`Call ${CONTACT_INFO.mainPhoneDisplay} or visit us at Dhanmondi, Dhaka. We're here to help.`} />
         <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-contact.jpg" />
         
         {/* Additional SEO */}
@@ -145,8 +156,8 @@ function Contact() {
               "@type": "CollegeOrUniversity",
               "name": "Aushnara College",
               "url": "https://aushnaracollege.edu.bd",
-              "telephone": "+880-2-58154892",
-              "email": "info@aushnaracollege.edu.bd",
+              "telephone": CONTACT_INFO.mainPhoneDisplay,
+              "email": CONTACT_INFO.infoEmail,
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "23/A, Dhanmondi R/A",
@@ -201,14 +212,14 @@ function Contact() {
             {/* Quick Contact Options */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <a 
-                href="tel:+880258154893" 
+                href={`tel:${CONTACT_INFO.admissionsPhoneUri}`}
                 className="bg-white text-college-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center"
               >
                 <Phone className="h-5 w-5 mr-2" />
                 Call Admissions
               </a>
               <a 
-                href="mailto:admissions@aushnaracollege.edu.bd" 
+                href={`mailto:${CONTACT_INFO.admissionsEmail}`}
                 className="bg-white/10 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-college-blue transition-colors flex items-center backdrop-blur-sm"
               >
                 <Mail className="h-5 w-5 mr-2" />
@@ -575,16 +586,16 @@ function Contact() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="tel:+880258154893" 
+                href={`tel:${CONTACT_INFO.admissionsPhoneUri}`}
                 className="bg-college-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center"
               >
-                📞 Call: +880-2-58154893
+                📞 Call: {CONTACT_INFO.admissionsPhoneDisplay}
               </a>
               <a 
-                href="mailto:urgent@aushnaracollege.edu.bd" 
+                href={`mailto:${CONTACT_INFO.urgentEmail}`}
                 className="bg-white text-college-blue border-2 border-college-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors text-center"
               >
-                📧 urgent@aushnaracollege.edu.bd
+                📧 {CONTACT_INFO.urgentEmail}
               </a>
             </div>
           </div>
@@ -757,11 +768,11 @@ function Contact() {
           <div className="text-center mt-10">
             <p className="text-gray-600 mb-4">Didn't find your answer?</p>
             <a 
-              href="tel:+88025815489 2"
+              href={`tel:${CONTACT_INFO.mainPhoneUri}`}
               className="inline-flex items-center text-college-blue hover:text-blue-800 font-semibold"
             >
               <Phone className="mr-2 h-4 w-4" />
-              Call us at +880-2-58154892
+              Call us at {CONTACT_INFO.mainPhoneDisplay}
             </a>
           </div>
         </div>
@@ -776,14 +787,14 @@ function Contact() {
               Join 2,847+ students at Aushnara College — Bangladesh's premier educational institution
             </p>
             <p className="text-lg text-blue-200 mb-10">
-              ⏰ HSC Admissions 2026-27 close on <span className="font-bold text-white">February 28, 2026</span>
+              ⏰ HSC Admissions {ADMISSIONS_CYCLE.label} close on <span className="font-bold text-white">{formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}</span>
             </p>
             
             <div className="grid md:grid-cols-3 gap-4 mb-10">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
                 <div className="text-3xl mb-2">📞</div>
                 <div className="font-semibold">Call Us</div>
-                <div className="text-sm text-blue-100">+880-2-58154893</div>
+                <div className="text-sm text-blue-100">{CONTACT_INFO.admissionsPhoneDisplay}</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
                 <div className="text-3xl mb-2">📧</div>
@@ -805,7 +816,7 @@ function Contact() {
                 🎓 Apply for Admission
               </a>
               <a 
-                href="tel:+880258154893" 
+                href={`tel:${CONTACT_INFO.admissionsPhoneUri}`}
                 className="border-2 border-white text-white hover:bg-white hover:text-college-blue px-10 py-4 rounded-lg font-bold text-xl transition-all duration-200"
               >
                 📞 Call Admissions Team

@@ -1,16 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { GraduationCap, MapPin, Phone, Mail, Facebook, Instagram, Linkedin, ArrowRight, ShieldCheck } from 'lucide-react'
+import { ADMISSIONS_CYCLE, CONTACT_INFO, SOCIAL_LINKS } from '../config/siteContent'
+import { formatLongDate, getApplicationWindowStatus } from '../utils/admissionsCycle'
 
 function Footer() {
+  const admissionsWindowStatus = getApplicationWindowStatus(new Date())
+  const admissionsStatusText = admissionsWindowStatus === 'open'
+    ? 'are open'
+    : admissionsWindowStatus === 'upcoming'
+      ? 'open soon'
+      : 'have closed'
+
   return (
     <footer className="bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950 text-white">
       {/* CTA strip */}
       <div className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-xl font-bold">Admissions 2026-27 are open</h3>
-            <p className="text-blue-100 text-sm">Get expert guidance from our admissions team.</p>
+            <h3 className="text-xl font-bold">Admissions {ADMISSIONS_CYCLE.label} {admissionsStatusText}</h3>
+            <p className="text-blue-100 text-sm">Apply by {formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}.</p>
           </div>
           <Link
             to="/admissions"
@@ -73,22 +82,22 @@ function Footer() {
             <ul className="space-y-3 text-sm text-blue-100">
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>23/A, Dhanmondi R/A, Dhaka-1205, Bangladesh</span>
+                <span>{CONTACT_INFO.addressLine1}, {CONTACT_INFO.addressLine2}</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <a href="tel:+880258154892" className="hover:text-white">+880-2-58154892</a>
+                <a href={`tel:${CONTACT_INFO.mainPhoneUri}`} className="hover:text-white">{CONTACT_INFO.mainPhoneDisplay}</a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <a href="mailto:info@aushnaracollege.edu.bd" className="hover:text-white">info@aushnaracollege.edu.bd</a>
+                <a href={`mailto:${CONTACT_INFO.infoEmail}`} className="hover:text-white">{CONTACT_INFO.infoEmail}</a>
               </li>
             </ul>
 
             <div className="mt-5 flex gap-3">
-              <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20"><Facebook className="h-4 w-4" /></a>
-              <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20"><Instagram className="h-4 w-4" /></a>
-              <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20"><Linkedin className="h-4 w-4" /></a>
+              <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/10 hover:bg-white/20"><Facebook className="h-4 w-4" /></a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/10 hover:bg-white/20"><Instagram className="h-4 w-4" /></a>
+              <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/10 hover:bg-white/20"><Linkedin className="h-4 w-4" /></a>
             </div>
           </div>
         </div>
