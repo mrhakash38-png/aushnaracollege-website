@@ -106,7 +106,24 @@ npm run preview
 
 # Run cross-platform monitoring checks
 npm run monitor:check
+
+# Publish content feed (research/journals/activities/updates)
+npm run content:publish
 ```
+
+## 🔁 Randomized Content Pipeline (15-20 minutes)
+
+- Public feed source: `public/data/content-feed.json`
+- Generator script: `scripts/publish-content-feed.mjs`
+- Automation: `.github/workflows/content-pipeline.yml` (runner checks every 5 minutes, publishes on randomized 15-20 minute cadence)
+- Commitment: continuous publishing for at least 30 days from pipeline start
+- Log retention: 31 days of publication entries
+- Educational news plan: 200 items distributed across 30 days and published progressively
+- Live trust pages:
+  - `/research-papers`
+  - `/journals`
+  - `/activities`
+  - `/updates`
 
 ## 🚀 Deployment
 
@@ -153,6 +170,22 @@ vercel --prod
 1. Verify domain in Google Search Console and submit `https://aushnaracollege.edu.bd/sitemap.xml`
 2. Verify domain in Bing Webmaster Tools and submit `https://aushnaracollege.edu.bd/sitemap.xml`
 3. Request indexing for priority pages (`/`, `/admissions`, `/programs`, `/contact`)
+
+## 📌 Canonical Project Status
+
+- Source of truth: `LAUNCH-CRITICAL-STATUS.md`
+- Current state: Core frontend complete, launch-critical operations pending
+
+## 🔐 Security Header Requirement
+
+- Production must send `Strict-Transport-Security` on `https://aushnaracollege.edu.bd/`
+- Validate using: `npm run monitor:check`
+
+## ✉️ Contact Form Submission Mode
+
+- `VITE_CONTACT_ENDPOINT` is optional.
+- If set, contact form sends JSON via `POST` and expects `2xx`.
+- If unset, contact form intentionally falls back to `mailto:`.
 
 ## 📈 Performance Metrics
 

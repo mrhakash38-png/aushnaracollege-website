@@ -12,7 +12,11 @@ const pageNames = {
   '/admissions': 'Admissions',
   '/admissions-bengali': 'Admissions Bengali',
   '/scholarships': 'Scholarships',
-  '/contact': 'Contact'
+  '/contact': 'Contact',
+  '/research-papers': 'Research Papers',
+  '/journals': 'Journals',
+  '/activities': 'Activities',
+  '/updates': 'Updates'
 }
 
 const pageMeta = {
@@ -78,6 +82,34 @@ const pageMeta = {
       'Contact Aushnara College for admissions, academic support, and campus information. View office hours, phone numbers, and department contacts.',
     keywords:
       'contact Aushnara College, admissions contact, campus address Dhaka, college phone number'
+  },
+  '/research-papers': {
+    title: 'Research Papers | Aushnara College',
+    description:
+      'Read recent research papers from Aushnara College across engineering, medicine, business, and education disciplines.',
+    keywords:
+      'research papers college, academic publications Bangladesh, university research'
+  },
+  '/journals': {
+    title: 'Academic Journals | Aushnara College',
+    description:
+      'Browse institutional journals and periodic academic publications from Aushnara College.',
+    keywords:
+      'college journals, academic journal Bangladesh, institutional publication'
+  },
+  '/activities': {
+    title: 'Campus Activities | Aushnara College',
+    description:
+      'Stay informed about latest student activities, academic events, competitions, and campus programs.',
+    keywords:
+      'campus activities, student events Bangladesh, college events'
+  },
+  '/updates': {
+    title: 'Live Updates Pipeline | Aushnara College',
+    description:
+      'See public publishing logs and freshness status for Aushnara College content updates.',
+    keywords:
+      'website updates, content pipeline, live publish status'
   }
 }
 

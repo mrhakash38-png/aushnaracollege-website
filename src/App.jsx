@@ -13,6 +13,10 @@ import Admissions from './pages/Admissions'
 import AdmissionsBengali from './pages/AdmissionsBengali'
 import Scholarships from './pages/Scholarships'
 import Contact from './pages/Contact'
+import ResearchPapers from './pages/ResearchPapers'
+import Journals from './pages/Journals'
+import Activities from './pages/Activities'
+import Updates from './pages/Updates'
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
               <Route path="/admissions-bengali" element={<AdmissionsBengali />} />
               <Route path="/scholarships" element={<Scholarships />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/research-papers" element={<ResearchPapers />} />
+              <Route path="/journals" element={<Journals />} />
+              <Route path="/activities" element={<Activities />} />
+              <Route path="/updates" element={<Updates />} />
             </Routes>
           </main>
           <Footer />

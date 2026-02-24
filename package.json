@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "monitor:check": "node scripts/monitoring-check.mjs"
+    "monitor:check": "node scripts/monitoring-check.mjs",
+    "content:publish": "node scripts/publish-content-feed.mjs",
+    "seo:check": "node scripts/seo-coverage-check.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

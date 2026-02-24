@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { GraduationCap, MapPin, Phone, Mail, Facebook, Instagram, Linkedin, ArrowRight, ShieldCheck } from 'lucide-react'
 import { ADMISSIONS_CYCLE, CONTACT_INFO, SOCIAL_LINKS } from '../config/siteContent'
 import { formatLongDate, getApplicationWindowStatus } from '../utils/admissionsCycle'
+import ContentFreshness from './ContentFreshness'
 
 function Footer() {
   const admissionsWindowStatus = getApplicationWindowStatus(new Date())
@@ -60,6 +61,10 @@ function Footer() {
               <li><Link to="/programs" className="text-blue-100 hover:text-white">Academic Programs</Link></li>
               <li><Link to="/admissions" className="text-blue-100 hover:text-white">Admissions</Link></li>
               <li><Link to="/scholarships" className="text-blue-100 hover:text-white">Scholarships</Link></li>
+              <li><Link to="/research-papers" className="text-blue-100 hover:text-white">Research Papers</Link></li>
+              <li><Link to="/journals" className="text-blue-100 hover:text-white">Journals</Link></li>
+              <li><Link to="/activities" className="text-blue-100 hover:text-white">Activities</Link></li>
+              <li><Link to="/updates" className="text-blue-100 hover:text-white">Live Updates</Link></li>
               <li><Link to="/admissions-bengali" className="text-blue-100 hover:text-white">ভর্তি তথ্য (বাংলা)</Link></li>
               <li><Link to="/contact" className="text-blue-100 hover:text-white">Contact</Link></li>
             </ul>
@@ -102,7 +107,8 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/10 text-center text-blue-200 text-sm">
+        <div className="mt-12 pt-6 border-t border-white/10 text-center text-blue-200 text-sm space-y-2">
+          <ContentFreshness />
           <p>&copy; {new Date().getFullYear()} Aushnara College. All rights reserved.</p>
         </div>
       </div>

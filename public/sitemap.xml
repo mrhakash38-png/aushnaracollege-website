@@ -74,4 +74,36 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Research Papers -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/research-papers</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Journals -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/journals</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Activities -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/activities</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Live Updates -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/updates</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
 </urlset>

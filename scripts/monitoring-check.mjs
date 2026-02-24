@@ -56,7 +56,8 @@ async function checkHsts(url) {
   const response = await fetchResponse(url, { method: 'HEAD' })
 
   if (!response) {
-    console.log('WARN HSTS header not checked (request failed)')
+    console.log('FAIL HSTS header not checked (request failed)')
+    failCount += 1
     return
   }
 
@@ -64,7 +65,8 @@ async function checkHsts(url) {
     console.log('PASS HSTS header detected')
     passCount += 1
   } else {
-    console.log('WARN HSTS header not detected')
+    console.log('FAIL HSTS header not detected')
+    failCount += 1
   }
 }
 
@@ -102,4 +104,3 @@ async function run() {
 }
 
 run()
-

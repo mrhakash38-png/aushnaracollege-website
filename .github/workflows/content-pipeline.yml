@@ -1,0 +1,40 @@
+name: Content Pipeline (15-20 minute random publish)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish content feed
+        run: npm run content:publish
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet; then
+            echo "No content changes to commit."
+            exit 0
+          fi
+          git config user.name "aushnara-bot"
+          git config user.email "automation@aushnaracollege.edu.bd"
+          git add public/data/content-feed.json
+          git commit -m "chore: publish randomized content feed"
+          git push
