@@ -17,6 +17,7 @@ import {
   Sparkles,
   Shield
 } from 'lucide-react'
+import { ADMISSIONS_CYCLE, STUDENT_COUNTS } from '../config/siteContent'
 
 function Home() {
   const features = [
@@ -43,9 +44,9 @@ function Home() {
   ]
 
   const stats = [
-    { number: '7,520', label: 'Total Students' },
-    { number: '1,847', label: 'Faculty & Staff' },
-    { number: '310+', label: 'Academic Programs' },
+    { number: STUDENT_COUNTS.activeEnrollmentLabel, label: 'Total Students' },
+    { number: STUDENT_COUNTS.facultyAndStaffLabel, label: 'Faculty & Staff' },
+    { number: STUDENT_COUNTS.programsLabel, label: 'Academic Programs' },
     { number: '98.7%', label: 'Graduate Success Rate' }
   ]
 
@@ -70,7 +71,7 @@ function Home() {
   const faqs = [
     {
       question: "What programs does Aushnara College offer?",
-      answer: "We offer 310+ programs across 9 faculties including Undergraduate programs (110+), Diploma courses (200+), and HSC programs in Science, Commerce, and Arts streams. Our flagship faculties include Engineering, Business, Medicine, Science, Arts, and Social Sciences."
+      answer: "We offer 310+ programs across 9 faculties including Undergraduate programs (110+), Diploma courses (216+), and HSC programs in Science, Commerce, and Arts streams. Our flagship faculties include Engineering, Business, Medicine, Science, Arts, and Social Sciences."
     },
     {
       question: "How do I apply for admission to Aushnara College?",
@@ -90,8 +91,8 @@ function Home() {
     <div className="overflow-hidden">
       <Helmet>
         <title>Aushnara College | Best College in Bangladesh | Excellence in Education Since 2001</title>
-        <meta name="description" content="Aushnara College - Bangladesh's premier educational institution since 2001. 7,520+ students, 310+ programs, 98.7% success rate. Offering HSC, Undergraduate, Diploma programs. Apply for admission 2026-27." />
-        <meta name="keywords" content="aushnara college, best college Bangladesh, HSC admission, undergraduate programs, diploma courses, Dhaka college, top college Bangladesh, higher education, college admission 2026" />
+        <meta name="description" content={`Aushnara College - Bangladesh's premier educational institution since 2001. ${STUDENT_COUNTS.activeEnrollmentLabel} students, ${STUDENT_COUNTS.programsLabel} programs, 98.7% success rate. Offering HSC, Undergraduate, Diploma programs. Apply for admission ${ADMISSIONS_CYCLE.label}.`} />
+        <meta name="keywords" content={`aushnara college, best college Bangladesh, HSC admission, undergraduate programs, diploma courses, Dhaka college, top college Bangladesh, higher education, college admission ${ADMISSIONS_CYCLE.keywordYear}`} />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://aushnaracollege.edu.bd/" />
@@ -100,7 +101,7 @@ function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aushnaracollege.edu.bd/" />
         <meta property="og:title" content="Aushnara College | Excellence in Education Since 2001" />
-        <meta property="og:description" content="Join 7,520+ students at Bangladesh's most trusted educational institution. 310+ programs, world-class faculty, 98.7% success rate. Apply now for admission 2026-27." />
+        <meta property="og:description" content={`Join ${STUDENT_COUNTS.activeEnrollmentLabel} students at Bangladesh's most trusted educational institution. ${STUDENT_COUNTS.programsLabel} programs, world-class faculty, 98.7% success rate. Apply now for admission ${ADMISSIONS_CYCLE.label}.`} />
         <meta property="og:image" content="https://aushnaracollege.edu.bd/og-image.jpg" />
         <meta property="og:locale" content="en_BD" />
         <meta property="og:site_name" content="Aushnara College" />
@@ -109,7 +110,7 @@ function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://aushnaracollege.edu.bd/" />
         <meta name="twitter:title" content="Aushnara College | Excellence in Education Since 2001" />
-        <meta name="twitter:description" content="Join 7,520+ students at Bangladesh's most trusted educational institution. 310+ programs, world-class faculty, 98.7% success rate." />
+        <meta name="twitter:description" content={`Join ${STUDENT_COUNTS.activeEnrollmentLabel} students at Bangladesh's most trusted educational institution. ${STUDENT_COUNTS.programsLabel} programs, world-class faculty, 98.7% success rate.`} />
         <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-image.jpg" />
         
         {/* Additional SEO */}
@@ -143,7 +144,7 @@ function Home() {
             "telephone": "+880-2-58154892",
             "email": "info@aushnaracollege.edu.bd",
             "foundingDate": "2001",
-            "numberOfStudents": "47520",
+            "numberOfStudents": "7520",
             "sameAs": [
               "https://www.facebook.com/aushnaracollege",
               "https://twitter.com/aushnaracollege",
@@ -202,8 +203,8 @@ function Home() {
 
             {/* Subheading with Icons */}
             <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto text-blue-100 leading-relaxed">
-              Join 7,520+ students at Bangladesh's most trusted educational institution. 
-              <span className="block mt-2 font-semibold text-white">310+ Programs • World-Class Faculty • 98.7% Success Rate</span>
+              Join {STUDENT_COUNTS.activeEnrollmentLabel} students at Bangladesh's most trusted educational institution. 
+              <span className="block mt-2 font-semibold text-white">{STUDENT_COUNTS.programsLabel} Programs • World-Class Faculty • 98.7% Success Rate</span>
             </p>
 
             {/* Trust Signals */}
@@ -222,7 +223,7 @@ function Home() {
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
                 <Users className="h-5 w-5 text-purple-400" />
-                <span className="text-sm font-medium">2,847+ HSC Students</span>
+                <span className="text-sm font-medium">{STUDENT_COUNTS.hscEnrollmentLabel} HSC Students</span>
               </div>
             </div>
 
@@ -233,7 +234,7 @@ function Home() {
                 className="group bg-gradient-to-r from-college-gold to-yellow-500 hover:from-yellow-500 hover:to-college-gold text-gray-900 px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105"
               >
                 <Sparkles className="mr-2 h-5 w-5" />
-                Apply for Admission 2026-27
+                Apply for Admission {ADMISSIONS_CYCLE.label}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
@@ -350,7 +351,7 @@ function Home() {
               Academic Excellence Across All Disciplines
             </h2>
             <p className="text-lg text-gray-600 mb-4">
-              310+ Programs | 9 Faculties | 45 Departments | World-Class Education
+              {STUDENT_COUNTS.programsLabel} Programs | 9 Faculties | 45 Departments | World-Class Education
             </p>
             <Link 
               to="/programs" 
@@ -363,7 +364,7 @@ function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {[
               { name: 'Undergraduate Programs', count: '110+', description: 'Bachelor\'s degrees across all major disciplines', color: 'from-blue-500 to-blue-600' },
-              { name: 'Diploma Courses', count: '200+', description: 'Professional diplomas and certificates', color: 'from-green-500 to-green-600' },
+              { name: 'Diploma Courses', count: '216+', description: 'Professional diplomas and certificates', color: 'from-green-500 to-green-600' },
               { name: 'HSC Programs', count: '3', description: 'Higher Secondary Certificate tracks', color: 'from-purple-500 to-purple-600' },
               { name: 'Research Centers', count: '15', description: 'Advanced research facilities and labs', color: 'from-orange-500 to-orange-600' }
             ].map((program, index) => (
@@ -385,19 +386,19 @@ function Home() {
               { 
                 name: 'Faculty of Engineering', 
                 programs: 'Civil, Electrical, Computer, Mechanical, Chemical Engineering',
-                students: '12,000+',
+                students: '12,000+ lifetime alumni',
                 link: 'engineering'
               },
               { 
                 name: 'Faculty of Business', 
                 programs: 'MBA, BBA, Finance, Marketing, Management, Accounting',
-                students: '8,500+',
+                students: '8,500+ lifetime alumni',
                 link: 'business'
               },
               { 
                 name: 'Faculty of Medicine', 
                 programs: 'MBBS, Nursing, Pharmacy, Public Health, Dentistry',
-                students: '6,200+',
+                students: '6,200+ lifetime alumni',
                 link: 'medical'
               }
             ].map((faculty, index) => (
@@ -411,7 +412,7 @@ function Home() {
                 </p>
                 <div className="text-center">
                   <span className="inline-block bg-college-blue text-white px-3 py-1 rounded-full text-sm font-semibold mb-4">
-                    {faculty.students} Students
+                    {faculty.students}
                   </span>
                 </div>
                 <div className="text-center">

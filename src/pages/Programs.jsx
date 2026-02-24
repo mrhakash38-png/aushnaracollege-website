@@ -2,6 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { BookOpen, Users, Award, ArrowRight, Building2, GraduationCap, Star, Calculator, Microscope, Computer } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { ADMISSIONS_CYCLE, STUDENT_COUNTS } from '../config/siteContent'
+import { formatLongDate } from '../utils/admissionsCycle'
 
 function Programs() {
   const programCategories = [
@@ -9,7 +11,7 @@ function Programs() {
       name: 'Undergraduate Programs',
       description: '110+ Bachelor\'s degree programs across 9 faculties with world-class education and research opportunities.',
       programs: ['Engineering', 'Business Administration', 'Medicine & Health Sciences', 'Science', 'Arts & Humanities', 'Social Sciences', 'Law', 'Architecture & Design', 'Agriculture'],
-      students: '36,420+',
+      students: '36,420+ lifetime learners',
       count: '110+',
       link: '/undergraduate-programs',
       icon: GraduationCap,
@@ -19,7 +21,7 @@ function Programs() {
       name: 'Diploma Programs', 
       description: '216+ professional diploma courses in 8 categories designed for industry-ready skills and employment.',
       programs: ['Engineering & Technology', 'Computer Science & IT', 'Business & Management', 'Health & Medical Sciences', 'Agriculture & Food Sciences', 'Arts, Design & Media', 'Social Sciences & Education', 'Vocational & Trade Skills'],
-      students: '81,400+',
+      students: '81,400+ lifetime learners',
       count: '216+',
       link: '/diploma-programs',
       icon: Award,
@@ -29,7 +31,7 @@ function Programs() {
       name: 'HSC Programs',
       description: 'Higher Secondary Certificate programs in Science, Commerce, and Arts with excellent pass rates.',
       programs: ['Science Group', 'Commerce Group', 'Arts Group'],
-      students: '2,847+',
+      students: '2,847+ active students',
       count: '3',
       link: '#hsc-programs',
       icon: BookOpen,
@@ -72,10 +74,17 @@ function Programs() {
 
   const highlights = [
     { number: '310+', label: 'Total Programs', description: 'Comprehensive educational offerings' },
-    { number: '120,667', label: 'Total Students', description: 'Active enrollment across all programs' },
-    { number: '1,847', label: 'Faculty & Staff', description: 'Qualified educators and support staff' },
-    { number: '98.2%', label: 'Overall Success Rate', description: 'Graduate employment and education' }
+    { number: STUDENT_COUNTS.activeEnrollmentLabel, label: 'Active Students', description: 'Current enrollment across all programs' },
+    { number: STUDENT_COUNTS.facultyAndStaffLabel, label: 'Faculty & Staff', description: 'Qualified educators and support staff' },
+    { number: STUDENT_COUNTS.lifetimeAlumniLabel, label: 'Alumni Network', description: 'Lifetime graduates and learners' }
   ]
+
+  const getProgramAnchor = (programName) => {
+    if (programName === 'Engineering') return 'engineering'
+    if (programName === 'Business Administration') return 'business'
+    if (programName === 'Medicine & Health Sciences') return 'medical'
+    return undefined
+  }
 
   const faqs = [
     {
@@ -189,7 +198,7 @@ function Programs() {
               </div>
               <div className="flex items-center">
                 <Users className="h-5 w-5 mr-2" />
-                <span>120,667 Students</span>
+                <span>{STUDENT_COUNTS.activeEnrollmentLabel} Active Students</span>
               </div>
               <div className="flex items-center">
                 <Award className="h-5 w-5 mr-2" />
@@ -266,7 +275,7 @@ function Programs() {
                       </div>
                       <div className="flex items-center text-sm text-gray-600">
                         <Users className="h-4 w-4 mr-2 text-college-blue" />
-                        <strong>Students:</strong> {category.students}
+                        <strong>Enrollment:</strong> {category.students}
                       </div>
                     </div>
                     <Link 
@@ -284,7 +293,7 @@ function Programs() {
                     </h4>
                     <div className="grid md:grid-cols-2 gap-3">
                       {category.programs.map((program, idx) => (
-                        <div key={idx} className="flex items-center text-gray-700">
+                        <div key={idx} id={getProgramAnchor(program)} className="flex items-center text-gray-700 scroll-mt-20">
                           <div className="w-2 h-2 bg-college-blue rounded-full mr-3 flex-shrink-0"></div>
                           <span className="text-sm font-medium">{program}</span>
                         </div>
@@ -586,7 +595,7 @@ function Programs() {
               Join 2,847+ students building successful futures at Aushnara College
             </p>
             <p className="text-lg text-blue-200 mb-10">
-              📅 HSC Admissions 2026-27 are now open — Limited seats available!
+              📅 HSC Admissions {ADMISSIONS_CYCLE.label} are now open — Apply by {formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}
             </p>
             
             <div className="grid md:grid-cols-3 gap-6 mb-10">

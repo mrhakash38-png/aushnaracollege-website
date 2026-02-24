@@ -186,3 +186,16 @@ According to PHASE-1-COMPLETION-REPORT.md, these are DONE but still showing as "
 - Internal linking updated in Footer
 
 **Next Session**: Continue with expanding existing pages (Diploma, Undergraduate, FAQ modules)
+
+---
+
+## 🔄 Phase 4 Closeout (Frontend + SEO)
+
+- ✅ Admissions cycle normalized to **2026-27** (deadline: **February 28, 2026**)
+- ✅ Active enrollment baseline standardized to **7,520+**
+- ✅ Cross-platform monitoring command available: `npm run monitor:check`
+
+### Manual External Tasks (Not Automated in Repo)
+1. Verify domain in Google Search Console and submit sitemap
+2. Verify domain in Bing Webmaster Tools and submit sitemap
+3. Request indexing for key pages after deployment

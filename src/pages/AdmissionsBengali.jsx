@@ -16,6 +16,7 @@ import {
   Clock,
   Users
 } from 'lucide-react'
+import { CONTACT_INFO } from '../config/siteContent'
 
 export default function AdmissionsBengali() {
   const admissionSteps = [
@@ -442,8 +443,8 @@ export default function AdmissionsBengali() {
                 <Phone className="w-6 h-6" />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">ফোন</h3>
-              <a href="tel:+8801234567890" className="text-blue-600 hover:text-blue-700">
-                +880 1234-567890
+              <a href={`tel:${CONTACT_INFO.admissionsPhoneUri}`} className="text-blue-600 hover:text-blue-700">
+                {CONTACT_INFO.admissionsPhoneDisplay}
               </a>
             </div>
 
@@ -463,7 +464,7 @@ export default function AdmissionsBengali() {
               </div>
               <h3 className="font-bold text-gray-900 mb-2">ঠিকানা</h3>
               <p className="text-gray-700">
-                ঢাকা, বাংলাদেশ
+                {CONTACT_INFO.addressLine1}, {CONTACT_INFO.addressLine2}
               </p>
             </div>
           </div>

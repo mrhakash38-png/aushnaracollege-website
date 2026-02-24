@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Calendar, FileText, DollarSign, CheckCircle, AlertCircle, Clock, Users, Award, Download, Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react'
+import { ADMISSIONS_CYCLE, CONTACT_INFO, STUDENT_COUNTS } from '../config/siteContent'
+import { formatLongDate, getAdmissionsTimeline, getApplicationWindowStatus } from '../utils/admissionsCycle'
 
 function Admissions() {
   const [openFAQ, setOpenFAQ] = useState(null)
@@ -8,14 +10,19 @@ function Admissions() {
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index)
   }
-  const timeline = [
-    { date: 'December 1 - February 28', event: 'HSC Admission Applications Open', status: 'open' },
-    { date: 'March 1 - March 15', event: 'Document Verification & Review', status: 'upcoming' },
-    { date: 'March 20 - March 25', event: 'Admission Test (Written & Viva)', status: 'upcoming' },
-    { date: 'April 1', event: 'Merit List Publication', status: 'upcoming' },
-    { date: 'April 5 - April 20', event: 'Final Admission & Fee Payment', status: 'upcoming' },
-    { date: 'July 1', event: 'Classes Begin (Academic Year 2025)', status: 'upcoming' }
-  ]
+  const timeline = getAdmissionsTimeline(new Date())
+  const admissionsWindowStatus = getApplicationWindowStatus(new Date())
+  const admissionsNoticeTitle = admissionsWindowStatus === 'open'
+    ? `HSC Admissions ${ADMISSIONS_CYCLE.label} Now Open!`
+    : admissionsWindowStatus === 'upcoming'
+      ? `HSC Admissions ${ADMISSIONS_CYCLE.label} Opening Soon`
+      : `HSC Admissions ${ADMISSIONS_CYCLE.label} Closed`
+
+  const admissionsNoticeBody = admissionsWindowStatus === 'open'
+    ? `Applications for HSC admission (Science, Commerce & Arts) are now being accepted. Deadline: ${formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}.`
+    : admissionsWindowStatus === 'upcoming'
+      ? `Applications will open on ${formatLongDate(ADMISSIONS_CYCLE.applicationStart)} for HSC admission (Science, Commerce & Arts).`
+      : `The ${ADMISSIONS_CYCLE.label} cycle deadline passed on ${formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}. Please contact the admissions office for the next intake.`
 
   const requirements = [
     {
@@ -95,7 +102,7 @@ function Admissions() {
   const faqs = [
     {
       question: 'What are the eligibility criteria for HSC admission?',
-      answer: 'Students must have passed SSC/equivalent examination with minimum GPA 3.5 for Science, 3.0 for Commerce, and 2.5 for Arts. Age limit: 17-21 years as of July 1, 2026.'
+      answer: `Students must have passed SSC/equivalent examination with minimum GPA 3.5 for Science, 3.0 for Commerce, and 2.5 for Arts. Age limit: 17-21 years as of ${formatLongDate(ADMISSIONS_CYCLE.classesBeginDate)}.`
     },
     {
       question: 'How can I apply for admission?',
@@ -131,7 +138,7 @@ function Admissions() {
     },
     {
       question: 'When will the admission results be published?',
-      answer: 'Merit list will be published on April 1, 2026 on our website and notice board. Selected candidates will also receive SMS/email notifications.'
+      answer: `Merit list will be published on ${formatLongDate(ADMISSIONS_CYCLE.meritListDate)} on our website and notice board. Selected candidates will also receive SMS/email notifications.`
     },
     {
       question: 'What documents do I need for the admission test?',
@@ -144,7 +151,7 @@ function Admissions() {
   ]
 
   const downloads = [
-    { name: 'College Prospectus 2026-27', size: '2.4 MB', type: 'PDF' },
+    { name: `College Prospectus ${ADMISSIONS_CYCLE.label}`, size: '2.4 MB', type: 'PDF' },
     { name: 'Admission Application Form', size: '156 KB', type: 'PDF' },
     { name: 'Admission Test Syllabus', size: '428 KB', type: 'PDF' },
     { name: 'Fee Structure Details', size: '312 KB', type: 'PDF' },
@@ -175,9 +182,9 @@ function Admissions() {
   return (
     <div className="pt-8">
       <Helmet>
-        <title>HSC Admission 2026-27 - Apply Now | Aushnara College</title>
-        <meta name="description" content="Apply for HSC admission 2026-27 at Aushnara College. Science, Commerce & Arts programs. Application deadline: Feb 28, 2026. 97.3% pass rate, scholarships available. Online & offline application accepted." />
-        <meta name="keywords" content="HSC admission 2026, college admission Bangladesh, Aushnara admission, apply HSC, admission process, admission fee, scholarship, application form, merit list, admission test" />
+        <title>{`HSC Admission ${ADMISSIONS_CYCLE.label} - Apply Now | Aushnara College`}</title>
+        <meta name="description" content={`Apply for HSC admission ${ADMISSIONS_CYCLE.label} at Aushnara College. Science, Commerce & Arts programs. Application deadline: ${formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}. 97.3% pass rate, scholarships available. Online & offline application accepted.`} />
+        <meta name="keywords" content={`HSC admission ${ADMISSIONS_CYCLE.keywordYear}, college admission Bangladesh, Aushnara admission, apply HSC, admission process, admission fee, scholarship, application form, merit list, admission test`} />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://aushnaracollege.edu.bd/admissions" />
@@ -185,15 +192,15 @@ function Admissions() {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aushnaracollege.edu.bd/admissions" />
-        <meta property="og:title" content="HSC Admission 2026-27 - Apply Now | Aushnara College" />
-        <meta property="og:description" content="Apply for HSC admission 2026-27. Science, Commerce & Arts. Application open till Feb 28. 97.3% pass rate. Scholarships available." />
+        <meta property="og:title" content={`HSC Admission ${ADMISSIONS_CYCLE.label} - Apply Now | Aushnara College`} />
+        <meta property="og:description" content={`Apply for HSC admission ${ADMISSIONS_CYCLE.label}. Science, Commerce & Arts. Application open till ${formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}. 97.3% pass rate. Scholarships available.`} />
         <meta property="og:image" content="https://aushnaracollege.edu.bd/og-admissions.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://aushnaracollege.edu.bd/admissions" />
-        <meta name="twitter:title" content="HSC Admission 2026-27 - Apply Now" />
-        <meta name="twitter:description" content="Apply for HSC admission. Science, Commerce & Arts. 97.3% pass rate. Deadline: Feb 28, 2026." />
+        <meta name="twitter:title" content={`HSC Admission ${ADMISSIONS_CYCLE.label} - Apply Now`} />
+        <meta name="twitter:description" content={`Apply for HSC admission. Science, Commerce & Arts. 97.3% pass rate. Deadline: ${formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}.`} />
         <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-admissions.jpg" />
         
         {/* Additional SEO */}
@@ -219,7 +226,7 @@ function Admissions() {
                 "name": "Aushnara College"
               },
               "timeToComplete": "P2Y",
-              "applicationDeadline": "2026-02-28"
+              "applicationDeadline": ADMISSIONS_CYCLE.applicationDeadline
             }
           })}
         </script>
@@ -229,7 +236,7 @@ function Admissions() {
       <section className="bg-gradient-to-r from-college-blue to-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Admissions 2026-27</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{`Admissions ${ADMISSIONS_CYCLE.label}`}</h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100">
               Join Our Academic Community
             </p>
@@ -243,8 +250,8 @@ function Admissions() {
           <div className="flex items-center">
             <AlertCircle className="h-6 w-6 text-yellow-600 mr-3" />
             <div>
-              <h3 className="text-lg font-semibold text-yellow-800">HSC Admissions 2025-26 Now Open!</h3>
-              <p className="text-yellow-700">Applications for HSC admission (Science, Commerce & Arts) are now being accepted. Deadline: February 28, 2025.</p>
+              <h3 className="text-lg font-semibold text-yellow-800">{admissionsNoticeTitle}</h3>
+              <p className="text-yellow-700">{admissionsNoticeBody}</p>
             </div>
           </div>
         </div>
@@ -263,7 +270,11 @@ function Admissions() {
               <div key={index} className="bg-white p-6 rounded-lg card-shadow flex items-center">
                 <div className="flex-shrink-0 mr-6">
                   <div className={`w-16 h-16 rounded-full flex items-center justify-center ${
-                    item.status === 'open' ? 'bg-green-500' : 'bg-gray-300'
+                    item.status === 'open'
+                      ? 'bg-green-500'
+                      : item.status === 'completed'
+                        ? 'bg-blue-500'
+                        : 'bg-gray-300'
                   }`}>
                     <Calendar className="h-8 w-8 text-white" />
                   </div>
@@ -274,11 +285,13 @@ function Admissions() {
                 </div>
                 <div className="flex-shrink-0">
                   <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                    item.status === 'open' 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-gray-100 text-gray-800'
+                    item.status === 'open'
+                      ? 'bg-green-100 text-green-800'
+                      : item.status === 'completed'
+                        ? 'bg-blue-100 text-blue-800'
+                        : 'bg-gray-100 text-gray-800'
                   }`}>
-                    {item.status === 'open' ? 'Open' : 'Upcoming'}
+                    {item.status === 'open' ? 'Open' : item.status === 'completed' ? 'Completed' : 'Upcoming'}
                   </span>
                 </div>
               </div>
@@ -518,8 +531,8 @@ function Admissions() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Call Us</h3>
               <p className="text-gray-600 mb-2">Admissions Office</p>
-              <a href="tel:+880258154893" className="text-college-blue font-semibold text-lg hover:underline">
-                +880-2-58154893
+              <a href={`tel:${CONTACT_INFO.admissionsPhoneUri}`} className="text-college-blue font-semibold text-lg hover:underline">
+                {CONTACT_INFO.admissionsPhoneDisplay}
               </a>
               <p className="text-sm text-gray-500 mt-2">Mon-Fri: 9:00 AM - 5:00 PM</p>
             </div>
@@ -530,8 +543,8 @@ function Admissions() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Email Us</h3>
               <p className="text-gray-600 mb-2">Admissions Enquiries</p>
-              <a href="mailto:admissions@aushnaracollege.edu.bd" className="text-college-blue font-semibold hover:underline break-all">
-                admissions@aushnaracollege.edu.bd
+              <a href={`mailto:${CONTACT_INFO.admissionsEmail}`} className="text-college-blue font-semibold hover:underline break-all">
+                {CONTACT_INFO.admissionsEmail}
               </a>
               <p className="text-sm text-gray-500 mt-2">Response within 24 hours</p>
             </div>
@@ -556,10 +569,10 @@ function Admissions() {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Your Future Starts Here</h2>
             <p className="text-xl md:text-2xl text-blue-100 mb-4">
-              Join 2,847+ students building successful careers at Aushnara College
+              Join {STUDENT_COUNTS.hscEnrollmentLabel} students building successful careers at Aushnara College
             </p>
             <p className="text-lg text-blue-200 mb-10">
-              ⏰ Applications close on <span className="font-bold text-white">February 28, 2026</span> — Don't miss out!
+              ⏰ Applications close on <span className="font-bold text-white">{formatLongDate(ADMISSIONS_CYCLE.applicationDeadline)}</span> — Don't miss out!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button className="bg-college-gold hover:bg-yellow-500 text-gray-900 px-10 py-4 rounded-lg font-bold text-xl transition-all duration-200 transform hover:scale-105 shadow-lg w-full sm:w-auto">

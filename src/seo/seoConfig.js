@@ -1,6 +1,7 @@
 export const SITE_NAME = 'Aushnara College'
 export const SITE_URL = 'https://aushnaracollege.edu.bd'
-export const DEFAULT_IMAGE = `${SITE_URL}/favicon.svg`
+export const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`
+export const LOGO_IMAGE = `${SITE_URL}/logo.png`
 
 const pageNames = {
   '/': 'Home',
@@ -9,6 +10,8 @@ const pageNames = {
   '/undergraduate-programs': 'Undergraduate Programs',
   '/diploma-programs': 'Diploma Programs',
   '/admissions': 'Admissions',
+  '/admissions-bengali': 'Admissions Bengali',
+  '/scholarships': 'Scholarships',
   '/contact': 'Contact'
 }
 
@@ -54,6 +57,20 @@ const pageMeta = {
       'Apply to Aushnara College. Get admission timelines, document requirements, fee structure, scholarships, and application steps.',
     keywords:
       'Aushnara College admissions, admission requirements Bangladesh, college fee structure, scholarships'
+  },
+  '/admissions-bengali': {
+    title: 'ভর্তি তথ্য | Aushnara College',
+    description:
+      'বাংলায় ভর্তি তথ্য, প্রয়োজনীয় কাগজপত্র, সময়সূচি, এবং আবেদন নির্দেশনা দেখুন।',
+    keywords:
+      'বাংলা ভর্তি তথ্য, কলেজ ভর্তি বাংলাদেশ, আউসনারা কলেজ ভর্তি'
+  },
+  '/scholarships': {
+    title: 'Scholarships & Financial Aid | Aushnara College',
+    description:
+      'Explore merit, need-based, and special scholarship programs at Aushnara College with up to 100% tuition waiver.',
+    keywords:
+      'Aushnara scholarships, tuition waiver Bangladesh, merit scholarship, need-based financial aid'
   },
   '/contact': {
     title: 'Contact Aushnara College | Campus, Departments, Inquiries',
@@ -139,7 +156,7 @@ export function getStructuredData(pathname) {
       '@type': 'CollegeOrUniversity',
       name: SITE_NAME,
       url: SITE_URL,
-      logo: DEFAULT_IMAGE,
+      logo: LOGO_IMAGE,
       email: 'info@aushnaracollege.edu.bd',
       telephone: '+880-2-58154892',
       address: {

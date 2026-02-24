@@ -20,8 +20,9 @@ Modern, fully responsive website for Aushnara College, Dhaka - One of Bangladesh
 ✉️ info@aushnaracollege.edu.bd  
 
 - **Founded**: 2001
-- **Students**: 2,847+ enrolled
-- **Faculty**: 89 qualified teachers
+- **Active Students**: 7,520+ enrolled
+- **Lifetime Learners & Alumni**: 120,000+
+- **Faculty & Staff**: 1,847
 - **HSC Pass Rate 2024**: 97.3%
 - **Recognition**: "Best Educational Institution" - Dhaka Education Board (2019)
 
@@ -102,6 +103,9 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Run cross-platform monitoring checks
+npm run monitor:check
 ```
 
 ## 🚀 Deployment
@@ -136,13 +140,19 @@ vercel --prod
 - **November 2024**: First place in National Inter-College Science Fair
 - **October 2024**: Digital Library expansion with 50,000+ e-books completed
 
-## 🎯 HSC Admission 2025-26
+## 🎯 HSC Admission 2026-27
 
-**Currently Open** - Apply before February 28, 2025
+**Currently Open** - Apply before February 28, 2026
 
-- **Application Period**: December 1 - February 28
-- **Admission Test**: March 20-25, 2025
-- **Classes Begin**: July 1, 2025
+- **Application Period**: December 1, 2025 - February 28, 2026
+- **Admission Test**: March 20-25, 2026
+- **Classes Begin**: July 1, 2026
+
+## ✅ Manual External Tasks
+
+1. Verify domain in Google Search Console and submit `https://aushnaracollege.edu.bd/sitemap.xml`
+2. Verify domain in Bing Webmaster Tools and submit `https://aushnaracollege.edu.bd/sitemap.xml`
+3. Request indexing for priority pages (`/`, `/admissions`, `/programs`, `/contact`)
 
 ## 📈 Performance Metrics
 
@@ -154,5 +164,5 @@ vercel --prod
 
 ---
 
-**© 2025 Aushnara College. All rights reserved.**  
+**© 2026 Aushnara College. All rights reserved.**  
 *Empowering minds, shaping futures since 2001*

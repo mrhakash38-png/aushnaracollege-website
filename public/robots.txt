@@ -40,4 +40,4 @@ Disallow: /
 
 # Sitemap
 Sitemap: https://aushnaracollege.edu.bd/sitemap.xml
-Sitemap: https://aushnaracollege.edu.bd/llms.txt
+# LLM index reference: https://aushnaracollege.edu.bd/llms.txt

@@ -10,7 +10,7 @@ function Footer() {
     ? 'are open'
     : admissionsWindowStatus === 'upcoming'
       ? 'open soon'
-      : 'have closed'
+      : 'are closed'
 
   return (
     <footer className="bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950 text-white">

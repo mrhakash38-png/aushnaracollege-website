@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Award, Users, Target, Heart, BookOpen, Building2 } from 'lucide-react'
+import { STUDENT_COUNTS } from '../config/siteContent'
 
 function About() {
   const milestones = [
@@ -12,7 +13,7 @@ function About() {
     { year: '2018', event: 'International Accreditation from WHO for Medical Programs' },
     { year: '2020', event: '100+ Undergraduate Programs Portfolio Completed' },
     { year: '2022', event: '200+ Diploma Programs Added Across 8 Categories' },
-    { year: '2023', event: '120,000+ Students Enrolled - Largest University in Bangladesh' },
+    { year: '2023', event: '120,000+ Lifetime Learners & Alumni Milestone Achieved' },
     { year: '2024', event: 'Research Grants Worth ৳50 Crore Approved for Advanced Studies' }
   ]
 
@@ -47,7 +48,7 @@ function About() {
     <div className="pt-8">
       <Helmet>
         <title>About Aushnara College | History, Mission & Leadership | Est. 2001</title>
-        <meta name="description" content="Learn about Aushnara College - Bangladesh's premier educational institution since 2001. Our history, mission, vision, and leadership team. 120,000+ students across 310+ programs with 98.7% success rate." />
+        <meta name="description" content={`Learn about Aushnara College - Bangladesh's premier educational institution since 2001. Our history, mission, vision, and leadership team. ${STUDENT_COUNTS.activeEnrollmentLabel} active students and ${STUDENT_COUNTS.lifetimeAlumniLabel} lifetime learners across ${STUDENT_COUNTS.programsLabel} programs.`} />
         <meta name="keywords" content="about aushnara college, college history, university Bangladesh, educational institution, mission vision, leadership team, college founding, accreditation" />
         
         {/* Canonical URL */}
@@ -57,14 +58,14 @@ function About() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aushnaracollege.edu.bd/about" />
         <meta property="og:title" content="About Aushnara College | History & Leadership" />
-        <meta property="og:description" content="Discover the story of Bangladesh's premier educational institution since 2001. 120,000+ students, 310+ programs, world-class leadership team." />
+        <meta property="og:description" content={`Discover the story of Bangladesh's premier educational institution since 2001. ${STUDENT_COUNTS.activeEnrollmentLabel} active students, ${STUDENT_COUNTS.lifetimeAlumniLabel} lifetime learners, ${STUDENT_COUNTS.programsLabel} programs.`} />
         <meta property="og:image" content="https://aushnaracollege.edu.bd/og-about.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://aushnaracollege.edu.bd/about" />
         <meta name="twitter:title" content="About Aushnara College | History & Leadership" />
-        <meta name="twitter:description" content="Discover the story of Bangladesh's premier educational institution since 2001. 120,000+ students, 310+ programs." />
+        <meta name="twitter:description" content={`Discover the story of Bangladesh's premier educational institution since 2001. ${STUDENT_COUNTS.activeEnrollmentLabel} active students and ${STUDENT_COUNTS.programsLabel} programs.`} />
         <meta name="twitter:image" content="https://aushnaracollege.edu.bd/og-about.jpg" />
         
         {/* Additional SEO */}
@@ -79,8 +80,8 @@ function About() {
               "@type": "CollegeOrUniversity",
               "name": "Aushnara College",
               "foundingDate": "2001",
-              "description": "Premier educational institution in Bangladesh offering 310+ programs with 120,000+ students",
-              "numberOfStudents": "120000",
+              "description": "Premier educational institution in Bangladesh offering 310+ programs with 7,520+ active students and 120,000+ lifetime learners",
+              "numberOfStudents": "7520",
               "url": "https://aushnaracollege.edu.bd",
               "address": {
                 "@type": "PostalAddress",
@@ -105,7 +106,7 @@ function About() {
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About Aushnara College</h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100">
-              Bangladesh's Premier Educational Institution • 310+ Programs • 120,000+ Students
+              Bangladesh's Premier Educational Institution • 310+ Programs • 7,520+ Active Students
             </p>
           </div>
         </div>
@@ -122,7 +123,7 @@ function About() {
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 To be Bangladesh's leading comprehensive university, providing world-class education across 
-                310+ programs to over 120,000 students. We empower learners through innovative teaching, 
+                310+ programs to over 120,000 lifetime learners while actively serving 7,520+ students. We empower learners through innovative teaching, 
                 cutting-edge research, and industry partnerships, fostering critical thinking, creativity, 
                 and leadership skills that drive societal progress and global competitiveness.
               </p>

@@ -295,9 +295,11 @@ function Contact() {
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-green-900 mb-1">Message Sent Successfully!</h3>
+                    <h3 className="font-semibold text-green-900 mb-1">Request Submitted Successfully</h3>
                     <p className="text-green-700 text-sm">
-                      Thank you for contacting us. We'll respond to your inquiry within 24 hours.
+                      {submitMode === 'api'
+                        ? "Thank you for contacting us. We'll respond to your inquiry within 24 hours."
+                        : `Your email client has been opened with a prefilled message to ${CONTACT_INFO.admissionsEmail}.`}
                     </p>
                   </div>
                 </div>
