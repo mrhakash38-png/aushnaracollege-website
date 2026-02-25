@@ -2,11 +2,9 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 const FEED_PATH = path.resolve('public/data/content-feed.json')
-const MIN_INTERVAL_MINUTES = 15
-const MAX_INTERVAL_MINUTES = 20
-const RETENTION_DAYS = 31
-const EDUCATIONAL_NEWS_TOTAL = Number(process.env.NEWS_TOTAL_ITEMS || 3000)
-const EDUCATIONAL_NEWS_WINDOW_DAYS = 30
+const RETENTION_DAYS = 120
+const NOTICE_KIND_TOTAL = 100
+const DAILY_NOTICE_WINDOW_DAYS = 100
 
 const RESEARCH_PAPERS = [
   {
@@ -96,9 +94,106 @@ const ACTIVITIES = [
   }
 ]
 
+const NOTICE_GROUPS = [
+  'Admissions Office',
+  'Academic Affairs',
+  'Examination Office',
+  'Scholarship Cell',
+  'Student Affairs',
+  'Faculty and HR',
+  'Finance Office',
+  'Campus Administration',
+  'IT Services',
+  'Compliance and Discipline'
+]
+
+const NOTICE_ACTIONS = [
+  'Program Launch Notice',
+  'Deadline Reminder',
+  'Routine Update',
+  'Meeting Circular',
+  'Instruction Bulletin',
+  'Policy Update',
+  'Application Call',
+  'Result Publication',
+  'Schedule Change',
+  'Emergency Alert'
+]
+
+const DAILY_NOTICE_TOPICS = [
+  'new admission program launched',
+  'faculty member completed formal service handover',
+  'urgent office notice issued',
+  'departmental meeting agenda published',
+  'student instruction updated for portal submission',
+  'weekly class routine revised',
+  'semester policy amendment announced',
+  'exam schedule and seat plan updated',
+  'scholarship application phase opened',
+  'maintenance and safety advisory published'
+]
+
+function pad2(value) {
+  return String(value).padStart(2, '0')
+}
+
 function buildBulletinId(date) {
-  const pad = (value) => String(value).padStart(2, '0')
-  return `bl-${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(date.getUTCDate())}-${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(date.getUTCSeconds())}`
+  return `bl-${date.getUTCFullYear()}${pad2(date.getUTCMonth() + 1)}${pad2(date.getUTCDate())}-${pad2(date.getUTCHours())}${pad2(date.getUTCMinutes())}${pad2(date.getUTCSeconds())}`
+}
+
+function formatDateOnly(date) {
+  return `${date.getUTCFullYear()}-${pad2(date.getUTCMonth() + 1)}-${pad2(date.getUTCDate())}`
+}
+
+function nextDailyPublish(now) {
+  const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 4, 0, 0, 0))
+  return next.toISOString()
+}
+
+function generateNoticeCatalog() {
+  const items = []
+  let counter = 1
+  for (const group of NOTICE_GROUPS) {
+    for (const action of NOTICE_ACTIONS) {
+      const id = `kind-${String(counter).padStart(3, '0')}`
+      items.push({
+        id,
+        group,
+        type: action,
+        label: `${group} - ${action}`,
+        description: `${action} related to ${group.toLowerCase()} operations and communication.`
+      })
+      counter += 1
+    }
+  }
+  return items
+}
+
+function generateDailyNotices(startedAtIso, now, noticeCatalog) {
+  const startAt = new Date(startedAtIso)
+  const items = []
+
+  for (let i = 0; i < NOTICE_KIND_TOTAL; i += 1) {
+    const releaseAt = new Date(startAt.getTime() + i * 24 * 60 * 60 * 1000)
+    const kind = noticeCatalog[i]
+    const topic = DAILY_NOTICE_TOPICS[i % DAILY_NOTICE_TOPICS.length]
+    const id = `notice-${String(i + 1).padStart(3, '0')}`
+    const isPublished = releaseAt <= now
+
+    items.push({
+      id,
+      kindId: kind.id,
+      title: `${kind.type}: ${topic}`,
+      category: kind.type,
+      group: kind.group,
+      date: formatDateOnly(releaseAt),
+      releaseAt: releaseAt.toISOString(),
+      isPublished,
+      summary: `Daily notice ${i + 1} of ${NOTICE_KIND_TOTAL}: ${kind.group} published an official update on ${topic}.`
+    })
+  }
+
+  return items
 }
 
 async function loadExisting() {
@@ -108,162 +203,6 @@ async function loadExisting() {
   } catch {
     return { bulletins: [] }
   }
-}
-
-function randomIntervalMinutes() {
-  return Math.floor(Math.random() * (MAX_INTERVAL_MINUTES - MIN_INTERVAL_MINUTES + 1)) + MIN_INTERVAL_MINUTES
-}
-
-function formatDateOnly(date) {
-  const y = date.getUTCFullYear()
-  const m = String(date.getUTCMonth() + 1).padStart(2, '0')
-  const d = String(date.getUTCDate()).padStart(2, '0')
-  return `${y}-${m}-${d}`
-}
-
-function generateEducationalNews(startedAtIso, now) {
-  const categories = [
-    'Admission Program',
-    'Faculty and Staff',
-    'Official Notice',
-    'Academic Meeting',
-    'Student Instruction',
-    'Class Routine',
-    'Academic Update',
-    'Examination Notice',
-    'Scholarship Circular',
-    'Campus Activity'
-  ]
-
-  const units = [
-    'Admissions Office',
-    'Registrar Office',
-    'Controller of Examinations',
-    'Academic Council',
-    'Student Affairs Division',
-    'School of Engineering',
-    'School of Business',
-    'School of Health Sciences',
-    'School of Arts and Social Science',
-    'Quality Assurance Cell'
-  ]
-
-  const programs = [
-    'Applied AI and Data Science',
-    'Renewable Energy Systems',
-    'Public Health Informatics',
-    'Digital Marketing and Analytics',
-    'Cybersecurity Operations',
-    'Smart Manufacturing',
-    'Financial Technology',
-    'Clinical Laboratory Practice',
-    'Educational Leadership',
-    'Media and Communication Studies'
-  ]
-
-  const meetingThemes = [
-    'semester planning review',
-    'course quality assurance',
-    'assessment moderation',
-    'research ethics implementation',
-    'industry partnership roadmap',
-    'student support strategy',
-    'internship coordination',
-    'lab safety compliance'
-  ]
-
-  const instructionThemes = [
-    'ID card verification',
-    'attendance compliance',
-    'LMS submission process',
-    'lab access protocol',
-    'library account update',
-    'tuition payment deadline',
-    'scholarship document upload',
-    'exam registration instructions'
-  ]
-
-  const routineActions = [
-    'revised class routine published',
-    'make-up class schedule announced',
-    'practical lab timing updated',
-    'section-wise timetable adjusted',
-    'advisor consultation slots released',
-    'weekly tutorial routine updated'
-  ]
-
-  const departureRoles = [
-    'Senior Lecturer',
-    'Assistant Professor',
-    'Program Coordinator',
-    'Lab Instructor',
-    'Administrative Officer'
-  ]
-
-  const startMs = new Date(startedAtIso).getTime()
-  const stepMs = Math.floor((EDUCATIONAL_NEWS_WINDOW_DAYS * 24 * 60 * 60 * 1000) / (EDUCATIONAL_NEWS_TOTAL - 1))
-
-  const allItems = []
-  for (let i = 0; i < EDUCATIONAL_NEWS_TOTAL; i += 1) {
-    const releaseAt = new Date(startMs + i * stepMs)
-    const category = categories[i % categories.length]
-    const unit = units[i % units.length]
-    const isPublished = releaseAt <= now
-    const sequence = String(i + 1).padStart(3, '0')
-    const program = programs[i % programs.length]
-    const meetingTheme = meetingThemes[i % meetingThemes.length]
-    const instructionTheme = instructionThemes[i % instructionThemes.length]
-    const routineAction = routineActions[i % routineActions.length]
-    const role = departureRoles[i % departureRoles.length]
-
-    let title = ''
-    let summary = ''
-
-    if (category === 'Admission Program') {
-      title = `New admission track launched: ${program}`
-      summary = `Notice ${i + 1}: ${unit} announced admission intake for ${program}, including eligibility, seat plan, and application timeline.`
-    } else if (category === 'Faculty and Staff') {
-      title = `${role} transition notice issued by ${unit}`
-      summary = `Official update ${i + 1}: a ${role.toLowerCase()} has formally completed service and handover instructions were published for continuity.`
-    } else if (category === 'Official Notice') {
-      title = `General administrative notice for current semester (${sequence})`
-      summary = `Circular ${i + 1}: ${unit} published updated compliance instructions for documentation, communication, and service response timelines.`
-    } else if (category === 'Academic Meeting') {
-      title = `Meeting scheduled on ${meetingTheme}`
-      summary = `Meeting memo ${i + 1}: ${unit} called faculty and academic coordinators for ${meetingTheme} with agenda and action points.`
-    } else if (category === 'Student Instruction') {
-      title = `Student instruction update: ${instructionTheme}`
-      summary = `Instruction ${i + 1}: students were directed to follow revised procedure on ${instructionTheme} through portal and notice board.`
-    } else if (category === 'Class Routine') {
-      title = `Routine bulletin: ${routineAction}`
-      summary = `Routine update ${i + 1}: ${unit} issued timetable changes for selected cohorts with effective date and section mapping.`
-    } else if (category === 'Academic Update') {
-      title = `Academic progress update for ${program}`
-      summary = `Progress note ${i + 1}: curriculum delivery and assessment milestones for ${program} were updated with verified completion data.`
-    } else if (category === 'Examination Notice') {
-      title = `Examination circular released for upcoming assessment cycle`
-      summary = `Exam notice ${i + 1}: ${unit} published registration, seat plan, and examination conduct guidelines for the next cycle.`
-    } else if (category === 'Scholarship Circular') {
-      title = `Scholarship circular published for merit and need-based support`
-      summary = `Scholarship update ${i + 1}: application windows, required documents, and review timelines were published by ${unit}.`
-    } else {
-      title = `Campus activity update: student engagement and outreach`
-      summary = `Activity update ${i + 1}: ${unit} announced event execution plan, participation targets, and reporting deadline.`
-    }
-
-    allItems.push({
-      id: `news-${sequence}`,
-      title,
-      category,
-      unit,
-      date: formatDateOnly(releaseAt),
-      releaseAt: releaseAt.toISOString(),
-      isPublished,
-      summary
-    })
-  }
-
-  return allItems
 }
 
 async function run() {
@@ -278,19 +217,18 @@ async function run() {
     return
   }
 
-  const appliedIntervalMinutes = randomIntervalMinutes()
-  const nextPublishAt = new Date(now.getTime() + appliedIntervalMinutes * 60 * 1000).toISOString()
   const startedAt = existing?.pipeline?.startedAt || isoNow
-  const commitmentEndsAt = existing?.pipeline?.commitmentEndsAt || new Date(new Date(startedAt).getTime() + 30 * 24 * 60 * 60 * 1000).toISOString()
+  const commitmentEndsAt = new Date(new Date(startedAt).getTime() + DAILY_NOTICE_WINDOW_DAYS * 24 * 60 * 60 * 1000).toISOString()
   const retentionCutoff = new Date(now.getTime() - RETENTION_DAYS * 24 * 60 * 60 * 1000)
-  const educationalNews = generateEducationalNews(startedAt, now)
-  const publishedNewsCount = educationalNews.filter((item) => item.isPublished).length
+  const noticeCatalog = generateNoticeCatalog()
+  const dailyNotices = generateDailyNotices(startedAt, now, noticeCatalog)
+  const publishedCount = dailyNotices.filter((item) => item.isPublished).length
 
   const nextBulletin = {
     id: buildBulletinId(now),
-    type: 'Pipeline Publish',
-    title: 'Random cadence pipeline publish completed',
-    note: `Content feed published. Next update scheduled in ${appliedIntervalMinutes} minutes.`,
+    type: 'Daily Publish',
+    title: 'Daily notice feed publish completed',
+    note: 'Notice board content and daily publication status refreshed.',
     publishedAt: isoNow
   }
 
@@ -300,29 +238,26 @@ async function run() {
 
   const feed = {
     generatedAt: isoNow,
-    intervalMinutes: appliedIntervalMinutes,
-    intervalRangeMinutes: {
-      min: MIN_INTERVAL_MINUTES,
-      max: MAX_INTERVAL_MINUTES
-    },
+    cadence: 'daily',
     retentionDays: RETENTION_DAYS,
     pipeline: {
       startedAt,
       commitmentEndsAt,
-      nextPublishAt,
+      nextPublishAt: nextDailyPublish(now),
       status: now <= new Date(commitmentEndsAt) ? 'within_commitment_window' : 'commitment_window_completed'
     },
     researchPapers: RESEARCH_PAPERS,
     journals: JOURNALS,
     activities: ACTIVITIES,
-    newsPlan: {
-      totalItems: EDUCATIONAL_NEWS_TOTAL,
-      windowDays: EDUCATIONAL_NEWS_WINDOW_DAYS,
-      publishedCount: publishedNewsCount,
-      remainingCount: EDUCATIONAL_NEWS_TOTAL - publishedNewsCount,
-      averageDailyVolume: Math.ceil(EDUCATIONAL_NEWS_TOTAL / EDUCATIONAL_NEWS_WINDOW_DAYS)
+    noticePlan: {
+      totalTypes: noticeCatalog.length,
+      totalDailyNotices: DAILY_NOTICE_WINDOW_DAYS,
+      publishedCount,
+      remainingCount: Math.max(0, DAILY_NOTICE_WINDOW_DAYS - publishedCount),
+      cadence: 'daily'
     },
-    educationalNews,
+    noticeCatalog,
+    dailyNotices,
     bulletins
   }
 

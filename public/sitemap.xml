@@ -106,4 +106,20 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- Notice Types -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/notice-types</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Daily Notices -->
+  <url>
+    <loc>https://aushnaracollege.edu.bd/daily-notices</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
 </urlset>

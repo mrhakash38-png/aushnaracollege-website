@@ -17,6 +17,8 @@ import ResearchPapers from './pages/ResearchPapers'
 import Journals from './pages/Journals'
 import Activities from './pages/Activities'
 import Updates from './pages/Updates'
+import NoticeTypes from './pages/NoticeTypes'
+import DailyNotices from './pages/DailyNotices'
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
               <Route path="/journals" element={<Journals />} />
               <Route path="/activities" element={<Activities />} />
               <Route path="/updates" element={<Updates />} />
+              <Route path="/notice-types" element={<NoticeTypes />} />
+              <Route path="/daily-notices" element={<DailyNotices />} />
             </Routes>
           </main>
           <Footer />

@@ -1,9 +1,9 @@
-name: Content Pipeline (15-20 minute random publish)
+name: Content Pipeline (Daily notice publish)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "5 4 * * *"
 
 permissions:
   contents: write

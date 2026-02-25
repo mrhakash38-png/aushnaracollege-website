@@ -16,7 +16,9 @@ const pageNames = {
   '/research-papers': 'Research Papers',
   '/journals': 'Journals',
   '/activities': 'Activities',
-  '/updates': 'Updates'
+  '/updates': 'Updates',
+  '/notice-types': 'Notice Types',
+  '/daily-notices': 'Daily Notices'
 }
 
 const pageMeta = {
@@ -110,6 +112,20 @@ const pageMeta = {
       'See public publishing logs and freshness status for Aushnara College content updates.',
     keywords:
       'website updates, content pipeline, live publish status'
+  },
+  '/notice-types': {
+    title: 'Notice Types (100) | Aushnara College',
+    description:
+      'Browse 100 different official notice types commonly used in college and university operations.',
+    keywords:
+      'college notice types, university notice categories, official notices'
+  },
+  '/daily-notices': {
+    title: 'Daily Notices | Aushnara College',
+    description:
+      'Read daily institutional notices including admissions, routine, instructions, meetings, and updates.',
+    keywords:
+      'daily notices, college updates, routine notice, meeting notice'
   }
 }
 

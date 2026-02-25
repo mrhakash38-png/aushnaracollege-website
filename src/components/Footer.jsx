@@ -64,6 +64,8 @@ function Footer() {
               <li><Link to="/research-papers" className="text-blue-100 hover:text-white">Research Papers</Link></li>
               <li><Link to="/journals" className="text-blue-100 hover:text-white">Journals</Link></li>
               <li><Link to="/activities" className="text-blue-100 hover:text-white">Activities</Link></li>
+              <li><Link to="/notice-types" className="text-blue-100 hover:text-white">Notice Types (100)</Link></li>
+              <li><Link to="/daily-notices" className="text-blue-100 hover:text-white">Daily Notices</Link></li>
               <li><Link to="/updates" className="text-blue-100 hover:text-white">Live Updates</Link></li>
               <li><Link to="/admissions-bengali" className="text-blue-100 hover:text-white">ভর্তি তথ্য (বাংলা)</Link></li>
               <li><Link to="/contact" className="text-blue-100 hover:text-white">Contact</Link></li>

@@ -11,6 +11,7 @@ function Header() {
     { name: 'About', href: '/about' },
     { name: 'Programs', href: '/programs' },
     { name: 'Research', href: '/research-papers' },
+    { name: 'Notices', href: '/daily-notices' },
     { name: 'Updates', href: '/updates' },
     { name: 'Admissions', href: '/admissions' },
     { name: 'Contact', href: '/contact' },

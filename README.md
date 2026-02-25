@@ -111,18 +111,22 @@ npm run monitor:check
 npm run content:publish
 ```
 
-## 🔁 Randomized Content Pipeline (15-20 minutes)
+## 🔁 Daily Notice Pipeline
 
 - Public feed source: `public/data/content-feed.json`
 - Generator script: `scripts/publish-content-feed.mjs`
-- Automation: `.github/workflows/content-pipeline.yml` (runner checks every 5 minutes, publishes on randomized 15-20 minute cadence)
-- Commitment: continuous publishing for at least 30 days from pipeline start
-- Log retention: 31 days of publication entries
-- Educational news plan: 200 items distributed across 30 days and published progressively
+- Automation: `.github/workflows/content-pipeline.yml` (daily publish cadence)
+- Commitment: continuous publishing across 100 days from pipeline start
+- Log retention: 120 days of publication entries
+- Notice system:
+  - 100 official notice types
+  - daily published notices over 100-day plan
 - Live trust pages:
   - `/research-papers`
   - `/journals`
   - `/activities`
+  - `/notice-types`
+  - `/daily-notices`
   - `/updates`
 
 ## 🚀 Deployment
